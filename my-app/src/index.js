@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './styles/index.css';
-import App from './pages/App';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 import {
@@ -15,16 +16,18 @@ const httpLink = createHttpLink({
   uri: 'http://localhost:4000'
 });
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache()
 });
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
   </ApolloProvider>,
   document.getElementById('root')
 );
