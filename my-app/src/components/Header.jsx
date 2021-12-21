@@ -29,7 +29,13 @@ export default class Header extends Component {
           <div className="currency-switcher-container">
             <CurrencySwitcher />
           </div>
-          <div className="cart-overlay"></div>
+          <div className="cart-overlay-container">
+            <Link
+              to="/cart"
+            >
+              CART
+            </Link>
+          </div>
         </div>
       </div>
     )
