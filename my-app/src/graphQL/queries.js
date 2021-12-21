@@ -1,11 +1,18 @@
 import { gql } from '@apollo/client';
 
-const PRODUCT_QUERY = gql`
-query GetRates {
+export const PRODUCT_QUERY = gql`
+query GetProducts {
   product(id: "jacket-canada-goosee") {
     name
   }
 }
 `;
 
-export default PRODUCT_QUERY;
+export const CURRENCIES_QUERY =  gql`
+query GetCurrencies {
+  currencies {
+    label
+    symbol
+  }
+}
+`;

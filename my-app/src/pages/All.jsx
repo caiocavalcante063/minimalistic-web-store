@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { client } from '..';
-import PRODUCT_QUERY from '../graphQL/queries';
+import { PRODUCT_QUERY } from '../graphQL/queries';
 
 export default class All extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       product: '',
     };
@@ -18,6 +18,7 @@ export default class All extends Component {
       .then(result => this.setState({ product: result.data.product.name }));
   }
   render() {
+    const { product } = this.state;
     return (
       <div>
         All

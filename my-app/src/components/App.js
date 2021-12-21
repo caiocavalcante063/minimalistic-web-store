@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 import All from '../pages/All';
 import Clothes from '../pages/Clothes';
 import Cart from '../pages/Cart';
@@ -11,7 +13,7 @@ import '../styles/App.css';
 class App extends Component {
   render() {
     return (
-      <>
+      <Provider store={ store }>
         <Header />
         <Routes>
           <Route exact path="/" element={ <All/> } />
@@ -20,7 +22,7 @@ class App extends Component {
           <Route exact path="/product-details" element={ <ProductDetails/> } />
           <Route exact path="/tech" element={ <Tech/> } />
         </Routes>
-      </>
+      </Provider>
     );
   }
 }
