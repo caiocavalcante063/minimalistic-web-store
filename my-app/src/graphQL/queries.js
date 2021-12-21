@@ -12,6 +12,7 @@ export const PRODUCTS_QUERY = gql`
         prices {
           currency {
             label
+            symbol
           }
           amount
         }

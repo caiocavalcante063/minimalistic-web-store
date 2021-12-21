@@ -5,7 +5,7 @@ export default class All extends Component {
   render() {
     return (
       <div>
-        <Category name="all" />
+        <Category />
       </div>
     );
   }

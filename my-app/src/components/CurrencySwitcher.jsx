@@ -45,8 +45,4 @@ const mapDispatchToProps = (dispatch) => ({
   currencySwitcher: (currency) => dispatch(currencySwitcherAction(currency)),
 });
 
-const mapStateToProps = (state) => ({
-  currency: state.main.currency,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CurrencySwitcher);
+export default connect(null, mapDispatchToProps)(CurrencySwitcher);
