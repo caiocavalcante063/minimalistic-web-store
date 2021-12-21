@@ -1,30 +1,30 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const PRODUCTS_QUERY = gql`
-query GetProducts($title: String!) {
-  category(input: { title: $title }) {
-    name
-    products {
-      id
+  query GetProducts($title: String!) {
+    category(input: { title: $title }) {
       name
-      inStock
-      gallery
-      prices {
-        currency {
-          label
+      products {
+        id
+        name
+        inStock
+        gallery
+        prices {
+          currency {
+            label
+          }
+          amount
         }
-        amount
       }
     }
   }
-}
 `;
 
-export const CURRENCIES_QUERY =  gql`
-query GetCurrencies {
-  currencies {
-    label
-    symbol
+export const CURRENCIES_QUERY = gql`
+  query GetCurrencies {
+    currencies {
+      label
+      symbol
+    }
   }
-}
 `;

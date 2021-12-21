@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { currencySwitcherAction } from '../redux/actions';
-import { client } from '..';
-import { CURRENCIES_QUERY } from '../graphQL/queries';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { currencySwitcherAction } from "../redux/actions";
+import { client } from "..";
+import { CURRENCIES_QUERY } from "../graphQL/queries";
 
 class CurrencySwitcher extends Component {
   constructor() {
@@ -17,10 +17,10 @@ class CurrencySwitcher extends Component {
   componentDidMount() {
     client
       .query({
-        query: CURRENCIES_QUERY
+        query: CURRENCIES_QUERY,
       })
-      .then(result => this.setState({ currencies: result.data.currencies }));
-    }
+      .then((result) => this.setState({ currencies: result.data.currencies }));
+  }
 
   handleChange({ target: { value } }) {
     const { currencySwitcher } = this.props;
@@ -30,29 +30,19 @@ class CurrencySwitcher extends Component {
   render() {
     const { currencies } = this.state;
     return (
-      currencies.length > 0 &&
-      <select
-        onChange={ this.handleChange }
-      >
-        {
-           currencies
-           .map(({ label }) => {
-             return (
-                <option
-                  value={ label }
-                >
-                  { label }
-                </option>
-             )
-           })
-        }
-      </select>
-    )
+      currencies.length > 0 && (
+        <select onChange={this.handleChange}>
+          {currencies.map(({ label }) => {
+            return <option value={label}>{label}</option>;
+          })}
+        </select>
+      )
+    );
   }
-};
+}
 
 const mapDispatchToProps = (dispatch) => ({
-  currencySwitcher: (currency) => (dispatch(currencySwitcherAction(currency)))
+  currencySwitcher: (currency) => dispatch(currencySwitcherAction(currency)),
 });
 
 const mapStateToProps = (state) => ({

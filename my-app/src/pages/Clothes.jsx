@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class Clothes extends Component {
   render() {
-    return (
-      <div>
-        Clothes
-      </div>
-    )
+    return <div>Clothes</div>;
   }
 }
