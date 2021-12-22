@@ -23,8 +23,8 @@ class CurrencySwitcher extends Component {
   }
 
   handleChange({ target: { value } }) {
-    const { currencySwitcher } = this.props;
-    currencySwitcher(value);
+    const { currencySwitcherFunction } = this.props;
+    currencySwitcherFunction(value);
   }
 
   render() {
@@ -42,7 +42,8 @@ class CurrencySwitcher extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  currencySwitcher: (currency) => dispatch(currencySwitcherAction(currency)),
+  currencySwitcherFunction: (currency) =>
+    dispatch(currencySwitcherAction(currency)),
 });
 
 export default connect(null, mapDispatchToProps)(CurrencySwitcher);
