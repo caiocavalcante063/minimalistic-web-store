@@ -1,11 +1,37 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addToCartAction } from "../redux/actions";
 
-export default class AddToCartButton extends Component {
+class AddToCartButton extends Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    const { selectedAttributes, productDetails, addToCart } = this.props;
+    const newProduct = { selectedAttributes, productDetails };
+
+    addToCart(newProduct);
+  }
+
   render() {
+    const { selectedAttributes } = this.props;
+
     return (
       <div>
-        <button>ADD TO CART</button>
+        <button
+          disabled={Object.keys(selectedAttributes).length <= 0}
+          onClick={this.handleClick}
+        >
+          ADD TO CART
+        </button>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (product) => dispatch(addToCartAction(product)),
+});
+
+export default connect(null, mapDispatchToProps)(AddToCartButton);

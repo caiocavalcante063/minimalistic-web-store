@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { PRODUCT_QUERY } from "../graphQL/queries";
 import { client } from "..";
 import AddToCartButton from "../components/AddToCartButton";
+import ProductAttributes from "../components/ProductAttributes";
 
 class ProductDetails extends Component {
   constructor() {
@@ -11,25 +12,39 @@ class ProductDetails extends Component {
     this.state = {
       productId: "",
       productDetails: {},
+      selectedAttributes: {},
     };
+
+    this.handleCart = this.handleCart.bind(this);
   }
 
   componentDidMount() {
     const path = window.location.pathname;
     const productId = path === "/" ? "all" : path.split("/")[2];
 
-    this.setState({ productId });
+    this.setState({ productId }, () =>
+      client
+        .query({
+          query: PRODUCT_QUERY,
+          variables: { id: `${productId}` },
+        })
+        .then((result) =>
+          this.setState({ productDetails: result.data.product })
+        )
+    );
+  }
 
-    client
-      .query({
-        query: PRODUCT_QUERY,
-        variables: { id: `${productId}` },
-      })
-      .then((result) => this.setState({ productDetails: result.data.product }));
+  handleCart(attributes) {
+    this.setState((prevState) => ({
+      selectedAttributes: {
+        ...prevState.selectedAttributes,
+        ...attributes,
+      },
+    }));
   }
 
   render() {
-    const { productId, productDetails } = this.state;
+    const { productDetails, selectedAttributes } = this.state;
     const { currency } = this.props;
     const { brand, gallery, name, attributes, prices, description } =
       productDetails;
@@ -52,24 +67,22 @@ class ProductDetails extends Component {
           <h1>{name}</h1>
         </div>
         <div className="product-details-attributes-container">
-          {attributes &&
-            attributes.map((attribute) => {
-              return (
-                <>
-                  <h2>{`${attribute.name}:`}</h2>
-                  {attribute.items.map((item) => {
-                    return <h3>{item.value}</h3>;
-                  })}
-                </>
-              );
-            })}
+          {attributes && (
+            <ProductAttributes
+              attributes={attributes}
+              handleCart={this.handleCart.bind(this)}
+            />
+          )}
         </div>
         <div className="product-details-price-container">
           <h2>PRICE:</h2>
           <h2>{prices && `${price.currency.symbol}${price.amount}`}</h2>
         </div>
         <div className="div-details-cart-button-container">
-          <AddToCartButton />
+          <AddToCartButton
+            selectedAttributes={selectedAttributes}
+            productDetails={productDetails}
+          />
         </div>
         <div className="product-details-description-container">
           {/* removing the paragraph structure from the description element */}

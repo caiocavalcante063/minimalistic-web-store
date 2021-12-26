@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { CURRENCY_SWITCH } from "../actions";
+import { ADD_TO_CART } from "../actions";
 
 const INITIAL_STATE = {
   currency: "USD",
@@ -13,6 +14,11 @@ const shopReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currency: action.currency,
+      };
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.product],
       };
     default:
       return state;
