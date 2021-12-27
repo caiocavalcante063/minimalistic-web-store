@@ -9,7 +9,7 @@ class AddToCartButton extends Component {
   }
   handleClick() {
     const { selectedAttributes, productDetails, addToCart } = this.props;
-    const newProduct = { selectedAttributes, productDetails };
+    const newProduct = { selectedAttributes, productDetails, quantity: 1 };
 
     addToCart(newProduct);
   }
