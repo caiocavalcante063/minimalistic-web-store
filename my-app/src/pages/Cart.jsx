@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import ProductAttributes from "../components/ProductAttributes";
-import { addToCartAction } from "../redux/actions";
+import { addToCartAction, removeFromCartAction } from "../redux/actions";
 import { connect } from "react-redux";
 
 class Cart extends Component {
   render() {
-    const { cartItems, addToCart } = this.props;
+    const { cartItems, addToCart, removeFromCart } = this.props;
     return (
       <>
         <h1>CART</h1>
@@ -24,14 +24,22 @@ class Cart extends Component {
                     addToCart({
                       selectedAttributes,
                       productDetails,
-                      quantity: 1,
                     })
                   }
                 >
                   +
                 </button>
                 <span className="cart-item-quantity">{quantity}</span>
-                <button>-</button>
+                <button
+                  onClick={() =>
+                    removeFromCart({
+                      selectedAttributes,
+                      productDetails,
+                    })
+                  }
+                >
+                  -
+                </button>
               </div>
               <div className="cart-item-gallery-container">
                 {productDetails.gallery.map((image) => {
@@ -52,6 +60,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addToCart: (product) => dispatch(addToCartAction(product)),
+  removeFromCart: (product) => dispatch(removeFromCartAction(product)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
