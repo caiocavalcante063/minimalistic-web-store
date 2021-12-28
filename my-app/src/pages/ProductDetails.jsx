@@ -43,6 +43,10 @@ class ProductDetails extends Component {
     }));
   }
 
+  handleDescription(productDescription) {
+    return { __html: `${productDescription}` };
+  }
+
   render() {
     const { productDetails, selectedAttributes } = this.state;
     const { currency } = this.props;
@@ -55,8 +59,8 @@ class ProductDetails extends Component {
       <div className="product-details">
         <div className="product-details-gallery-container">
           {gallery &&
-            gallery.map((image) => {
-              return <img src={image} alt={name} width="150px" />;
+            gallery.map((image, index) => {
+              return <img key={index} src={image} alt={name} width="150px" />;
             })}
         </div>
         <div className="product-details-main-img-container">
@@ -85,8 +89,12 @@ class ProductDetails extends Component {
           />
         </div>
         <div className="product-details-description-container">
-          {/* removing the paragraph structure from the description element */}
-          <p>{description && description.split(">")[1].split("<")[0]}</p>
+          {/* using element's html structure to create the product description */}
+          {description && (
+            <div
+              dangerouslySetInnerHTML={this.handleDescription(description)}
+            />
+          )}
         </div>
       </div>
     );

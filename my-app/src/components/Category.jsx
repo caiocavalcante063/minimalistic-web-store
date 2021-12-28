@@ -30,6 +30,7 @@ export default class Category extends Component {
     return products.map(({ id, name, inStock, gallery, prices, brand }) => {
       return (
         <ProductCard
+          key={id}
           id={id}
           name={name}
           inStock={inStock}

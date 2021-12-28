@@ -33,7 +33,11 @@ class CurrencySwitcher extends Component {
       currencies.length > 0 && (
         <select onChange={this.handleChange}>
           {currencies.map(({ label }) => {
-            return <option value={label}>{label}</option>;
+            return (
+              <option key={label} value={label}>
+                {label}
+              </option>
+            );
           })}
         </select>
       )
