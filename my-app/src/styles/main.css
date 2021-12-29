@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&family=Source+Sans+3:wght@200;300;400;500;600;700&display=swap");
+* {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80px;
+  margin-bottom: 80px;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.header .header-left-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 32px;
+  height: 100%;
+}
+
+.header .header-left-container a {
+  color: #1d1f22;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 80px;
+  text-decoration: none;
+}
+
+.header .header-left-container a:hover {
+  color: #5ece7b;
+}
+
+.header .header-left-container .header-link-page-selected {
+  border-bottom: 2px solid #5ece7b;
+}
+
+.header .header-left-container .header-link-page-selected a {
+  padding: 4px;
+  color: #5ece7b;
+}
+
+.header .header-center-container img {
+  height: 30.18px;
+  width: 31.16px;
+}
+
+.header .header-right-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 22px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.header .header-right-container .currency-switcher-header {
+  position: relative;
+}
+
+.header .header-right-container .currency-switcher-header button {
+  background: #ffffff;
+  border: none;
+  font-size: 18px;
+  height: 29px;
+  width: 38px;
+}
+
+.header .header-right-container .currency-switcher-header button:hover {
+  cursor: pointer;
+}
+
+.header .header-right-container .currency-switcher-header button img {
+  position: absolute;
+  top: 12px;
+  right: 0px;
+}
+
+.header .header-right-container .currency-switcher-icon-closed {
+  right: 42px;
+  top: 22px;
+}
+
+.header .header-right-container .currency-switcher-icon-open {
+  right: 42px;
+  top: 22px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.header .header-right-container .currency-switcher-body {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+          filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 21px;
+  height: auto;
+  position: absolute;
+  top: 60px;
+  width: 114px;
+}
+
+.header .header-right-container .currency-switcher-body button {
+  background: #ffffff;
+  border: none;
+  height: 29px;
+  width: 54px;
+}
+
+.header .header-right-container .currency-switcher-body button:hover {
+  cursor: pointer;
+}
+
+.header .header-right-container .currency-switcher-body button:first-of-type {
+  margin-top: 20px;
+}
+
+.header .header-right-container .currency-switcher-body button:last-of-type {
+  margin-bottom: 20px;
+}
+
+.header .header-right-container .cart-overlay-container .cart-overlay-header button {
+  background: #ffffff;
+  border: none;
+  padding-top: 4px;
+}
+
+.header .header-right-container .cart-overlay-container .cart-overlay-header button img {
+  height: 18px;
+  width: 20px;
+}
+
+.header .header-right-container .cart-overlay-container .cart-overlay-header button:hover {
+  cursor: pointer;
+}
+
+body {
+  padding: 28px 102px;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import ProductAttributes from "../components/ProductAttributes";
-import { addToCartAction, removeFromCartAction } from "../redux/actions";
+import CartQuantityHandler from "../components/CartQuantityHandler";
 import { connect } from "react-redux";
+import "../styles/main.css";
 
 class Cart extends Component {
   render() {
-    const { cartItems, addToCart, removeFromCart, currency } = this.props;
+    const { cartItems, currency } = this.props;
     return (
       <>
         <h1>CART</h1>
@@ -28,27 +29,11 @@ class Cart extends Component {
                   <ProductAttributes attributes={productDetails.attributes} />
                 </div>
                 <div className="cart-item-quantity-container">
-                  <button
-                    onClick={() =>
-                      addToCart({
-                        selectedAttributes,
-                        productDetails,
-                      })
-                    }
-                  >
-                    +
-                  </button>
-                  <span className="cart-item-quantity">{quantity}</span>
-                  <button
-                    onClick={() =>
-                      removeFromCart({
-                        selectedAttributes,
-                        productDetails,
-                      })
-                    }
-                  >
-                    -
-                  </button>
+                  <CartQuantityHandler
+                    quantity={quantity}
+                    productDetails={productDetails}
+                    selectedAttributes={selectedAttributes}
+                  />
                 </div>
                 <div className="cart-item-gallery-container">
                   {productDetails.gallery.map((image, index) => {
@@ -71,9 +56,4 @@ const mapStateToProps = (state) => ({
   currency: state.currency.currency,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  addToCart: (product) => dispatch(addToCartAction(product)),
-  removeFromCart: (product) => dispatch(removeFromCartAction(product)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps)(Cart);

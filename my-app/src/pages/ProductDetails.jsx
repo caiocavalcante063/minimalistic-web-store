@@ -4,6 +4,7 @@ import { PRODUCT_QUERY } from "../graphQL/queries";
 import { client } from "..";
 import AddToCartButton from "../components/AddToCartButton";
 import ProductAttributes from "../components/ProductAttributes";
+import "../styles/main.css";
 
 class ProductDetails extends Component {
   constructor() {

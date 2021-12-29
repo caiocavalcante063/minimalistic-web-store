@@ -1,0 +1,138 @@
+.header {
+  align-items: center;
+  background-color: $background-color;
+  display: flex;
+  height: 80px;
+  margin-bottom: 80px;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+
+  #{&}-left-container {
+    align-items: center;
+    display: flex;
+    gap: 32px;
+    height: 100%;
+
+    a {
+      color: $primary-color;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 80px;
+      text-decoration: none;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+
+    .header-link-page-selected {
+      border-bottom: 2px solid $accent-color;
+
+      a {
+        padding: 4px;
+        color: $accent-color;
+      }
+    }
+  }
+
+  #{&}-center-container {
+    img {
+      height: 30.18px;
+      width: 31.16px;
+    }
+  }
+
+  #{&}-right-container {
+    align-items: center;
+    display: flex;
+    gap: 22px;
+    justify-content: flex-end;
+
+    .currency-switcher {
+      &-header {
+        position: relative;
+
+        button {
+          background: $background-color;
+          border: none;
+          font-size: 18px;
+          height: 29px;
+          width: 38px;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          img {
+            position: absolute;
+            top: 12px;
+            right: 0px;
+          }
+        }
+      }
+
+      &-icon-closed {
+        right: 42px;
+        top: 22px;
+      }
+
+      &-icon-open {
+        right: 42px;
+        top: 22px;
+        transform: rotate(180deg);
+      }
+
+      &-body {
+        align-items: center;
+        background-color: $background-color;
+        display: flex;
+        filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+        flex-direction: column;
+        gap: 21px;
+        height: auto;
+        position: absolute;
+        top: 60px;
+        width: 114px;
+
+        button {
+          background: $background-color;
+          border: none;
+          height: 29px;
+          width: 54px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        button:first-of-type {
+          margin-top: 20px;
+        }
+
+        button:last-of-type {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .cart-overlay-container {
+      .cart-overlay-header {
+        button {
+          background: $background-color;
+          border: none;
+          padding-top: 4px;
+
+          img {
+            height: 18px;
+            width: 20px;
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

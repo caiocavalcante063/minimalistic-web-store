@@ -13,12 +13,12 @@ export default class Category extends Component {
 
   componentDidMount() {
     const path = window.location.pathname;
-    const categoryName = path === "/" ? "all" : path.split("/")[1];
+    const selectedCategory = path === "/" ? "all" : path.split("/")[1];
 
     client
       .query({
         query: PRODUCTS_QUERY,
-        variables: { title: `${categoryName}` },
+        variables: { title: `${selectedCategory}` },
       })
       .then((result) =>
         this.setState({ products: result.data.category.products })

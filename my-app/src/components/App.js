@@ -8,7 +8,6 @@ import Cart from "../pages/Cart";
 import Header from "./Header";
 import ProductDetails from "../pages/ProductDetails";
 import Tech from "../pages/Tech";
-import "../styles/App.css";
 
 class App extends Component {
   render() {
