@@ -9,14 +9,20 @@ class ProductCard extends Component {
     const price = prices.find((price) => price.currency.label === currency);
 
     return (
-      <Link to={`/product-details/${id}`}>
-        <div className="product-card-container" id={id}>
-          <img src={gallery[0]} alt={name} width="300px" />
-          <h2>{`${brand} ${name}`}</h2>
-          <h2>{`${price.currency.symbol}${price.amount}`}</h2>
-          <h2>{`In Stock ? ${inStock}`}</h2>
-        </div>
-      </Link>
+      <div className={`product-card${inStock === false ? "-out" : ""}`} id={id}>
+        <Link to={`/product-details/${id}`}>
+          {inStock === false && (
+            <div className="out-of-stock">
+              <h2 className="out-of-stock-text">OUT OF STOCK</h2>
+            </div>
+          )}
+          <div className="product-card-image-container">
+            <img className="product-card-img" src={gallery[0]} alt={name} />
+          </div>
+          <h2 className="product-card-name">{`${brand} ${name}`}</h2>
+          <h2 className="product-card-price">{`${price.currency.symbol}${price.amount}`}</h2>
+        </Link>
+      </div>
     );
   }
 }

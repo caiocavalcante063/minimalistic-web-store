@@ -27,18 +27,22 @@ export default class Category extends Component {
 
   render() {
     const { products } = this.state;
-    return products.map(({ id, name, inStock, gallery, prices, brand }) => {
-      return (
-        <ProductCard
-          key={id}
-          id={id}
-          name={name}
-          inStock={inStock}
-          gallery={gallery}
-          prices={prices}
-          brand={brand}
-        />
-      );
-    });
+    return (
+      <div className="category-container">
+        {products.map(({ id, name, inStock, gallery, prices, brand }) => {
+          return (
+            <ProductCard
+              key={id}
+              id={id}
+              name={name}
+              inStock={inStock}
+              gallery={gallery}
+              prices={prices}
+              brand={brand}
+            />
+          );
+        })}
+      </div>
+    );
   }
 }
