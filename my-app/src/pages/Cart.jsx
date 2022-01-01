@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ProductAttributes from "../components/ProductAttributes";
 import CartQuantityHandler from "../components/CartQuantityHandler";
 import { connect } from "react-redux";
+import { getProductPrice } from "../utils/utils";
 import "../styles/main.css";
 
 class Cart extends Component {
@@ -12,11 +13,8 @@ class Cart extends Component {
         <h1>CART</h1>
         {cartItems.map(
           ({ productDetails, selectedAttributes, quantity }, index) => {
-            const price =
-              productDetails.prices &&
-              productDetails.prices.find(
-                (price) => price.currency.label === currency
-              );
+            const price = getProductPrice(productDetails.prices, currency);
+
             return (
               <div className="cart-item" key={index}>
                 <h2 className="cart-item-brand-name">{productDetails.brand}</h2>

@@ -2,10 +2,19 @@ import React, { Component } from "react";
 import "../styles/main.css";
 
 export default class ProductAttributes extends Component {
+  selectedAttributeHandler(attributeValue) {
+    const { selectedAttributes } = this.props;
+    selectedAttributes &&
+      console.log(Object.entries(selectedAttributes)[0], attributeValue);
+    return (
+      selectedAttributes &&
+      Object.entries(selectedAttributes)[0].some(
+        (val) => val === attributeValue
+      )
+    );
+  }
   render() {
     const { attributes, handleCart } = this.props;
-    const path = window.location.pathname.split("/")[1];
-    console.log(path);
 
     return attributes.map((attribute, index) => {
       return (
@@ -25,8 +34,11 @@ export default class ProductAttributes extends Component {
                     [`${attribute.type} ${attribute.name}`]: value,
                   })
                 }
-                // if the user is not in the PDP, attributes change is not allowed
-                disabled={path !== "product-details"}
+                className={
+                  this.selectedAttributeHandler(value) === true
+                    ? "selected"
+                    : "not-selected"
+                }
               >
                 {attribute.type === "swatch" ? "" : value}
               </button>

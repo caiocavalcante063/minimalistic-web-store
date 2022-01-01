@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import ProductAttributes from "../components/ProductAttributes";
 import CartQuantityHandler from "../components/CartQuantityHandler";
 import { connect } from "react-redux";
 import cartIcon from "../images/cartIcon.svg";
+import { getProductPrice } from "../utils/utils";
 
 export class CartOverlay extends Component {
   constructor() {
@@ -12,9 +14,19 @@ export class CartOverlay extends Component {
     };
   }
 
+  getTotalPrice() {
+    const { currency, cartItems } = this.props;
+    let totalPrice = 0;
+    cartItems.map(({ productDetails: { prices }, quantity }) => {
+      const price = getProductPrice(prices, currency);
+      return (totalPrice += price.amount * quantity);
+    });
+    return Math.round(totalPrice * 100) / 100;
+  }
+
   render() {
     const { open } = this.state;
-    const { cartItems, currency } = this.props;
+    const { cartItems, currency, currencyLabel } = this.props;
 
     return (
       <>
@@ -55,6 +67,7 @@ export class CartOverlay extends Component {
                       <div className="cart-overlay-body-product-attributes-container">
                         <ProductAttributes
                           attributes={productDetails.attributes}
+                          selectedAttributes={selectedAttributes}
                         />
                       </div>
                       <div className="cart-overlay-body-product-quantity-container">
@@ -75,6 +88,18 @@ export class CartOverlay extends Component {
                   );
                 }
               )}
+              <div className="cart-overlay-body-total-container">
+                <h2 className="cart-overlay-body-total-title">
+                  Total{" "}
+                  <span className="cart-overlay-body-total-price">{`${currencyLabel} ${this.getTotalPrice()}`}</span>
+                </h2>
+              </div>
+              <div className="cart-overlay-body-bag-and-checkout-container">
+                <Link to="/cart">
+                  <button className="view-bag-button">VIEW BAG</button>
+                </Link>
+                <button className="checkout-button">CHECK OUT</button>
+              </div>
             </div>
           </div>
         )}
@@ -86,6 +111,7 @@ export class CartOverlay extends Component {
 const mapStateToProps = (state) => ({
   cartItems: state.cart.cartItems,
   currency: state.currency.currency,
+  currencyLabel: state.currency.label,
 });
 
 export default connect(mapStateToProps)(CartOverlay);

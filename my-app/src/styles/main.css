@@ -162,13 +162,17 @@
 }
 
 .header .header-right-container .cart-overlay-body {
+  height: 100%;
+  left: 380px;
   position: absolute;
-  left: 600px;
+  top: 80px;
 }
 
 .header .header-right-container .cart-overlay-body-title {
   font-size: 16px;
   font-weight: 700;
+  margin-bottom: 25px;
+  padding: 8px 16px 8px;
 }
 
 .header .header-right-container .cart-overlay-body-title-quantity {
@@ -177,22 +181,28 @@
 
 .header .header-right-container .cart-overlay-body-products-container {
   background-color: white;
+  padding: 8px 16px;
   width: 325px;
 }
 
 .header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product {
   height: 137px;
+  margin-bottom: 50px;
   position: relative;
   width: 293px;
 }
 
 .header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-title-container {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   height: 52px;
+  line-height: 26.5px;
   width: 136px;
 }
 
@@ -204,6 +214,11 @@
 .header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-price {
   font-size: 16px;
   font-weight: 500;
+  margin-top: 15px;
+}
+
+.header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-attributes-container {
+  margin-top: 27px;
 }
 
 .header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-attributes-container .attribute-name {
@@ -211,14 +226,54 @@
 }
 
 .header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-attributes-container button {
-  border: black 1px solid;
-  color: black;
   cursor: default;
   font-size: 14px;
   font-weight: 400;
   height: 24px;
   margin-right: 8px;
   pointer-events: none;
+  width: 24px;
+}
+
+.header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-attributes-container button.not-selected {
+  background: rgba(166, 166, 166, 0.2) !important;
+  border: 1px solid #a6a6a6;
+  color: #a6a6a6;
+}
+
+.header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-attributes-container button.selected {
+  border: 1px solid black;
+  color: black;
+}
+
+.header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-quantity-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 137px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 115px;
+  width: 24px;
+}
+
+.header .header-right-container .cart-overlay-body-products-container .cart-overlay-body-product-quantity-container button {
+  background-color: white;
+  border: 1px solid black;
+  font-size: 30px;
+  font-weight: 200;
+  height: 24px;
+  line-height: 20px;
   width: 24px;
 }
 
@@ -235,6 +290,54 @@
      object-fit: cover;
   height: 137px;
   width: 105px;
+}
+
+.header .header-right-container .cart-overlay-body-total-container {
+  position: relative;
+}
+
+.header .header-right-container .cart-overlay-body-total-container h2 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.header .header-right-container .cart-overlay-body-total-container h2 span {
+  font-weight: 700;
+  position: absolute;
+  right: 36px;
+}
+
+.header .header-right-container .cart-overlay-body-bag-and-checkout-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 35px;
+}
+
+.header .header-right-container .cart-overlay-body-bag-and-checkout-container button.view-bag-button {
+  background-color: #ffffff;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  height: 43px;
+  width: 140px;
+}
+
+.header .header-right-container .cart-overlay-body-bag-and-checkout-container button.checkout-button {
+  background-color: #5ece7b;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  height: 43px;
+  margin-right: 36px;
+  width: 140px;
 }
 
 .product-card,

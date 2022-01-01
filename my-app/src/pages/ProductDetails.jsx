@@ -4,6 +4,7 @@ import { PRODUCT_QUERY } from "../graphQL/queries";
 import { client } from "..";
 import AddToCartButton from "../components/AddToCartButton";
 import ProductAttributes from "../components/ProductAttributes";
+import { getProductPrice } from "../utils/utils";
 import "../styles/main.css";
 
 class ProductDetails extends Component {
@@ -53,8 +54,7 @@ class ProductDetails extends Component {
     const { currency } = this.props;
     const { brand, gallery, name, attributes, prices, description } =
       productDetails;
-    const price =
-      prices && prices.find((price) => price.currency.label === currency);
+    const price = getProductPrice(prices, currency);
 
     return (
       <div className="product-details">
