@@ -117,7 +117,18 @@
     }
 
     .cart-overlay {
+      .fade-background {
+        background: rgba(57, 55, 72, 0.22);
+        height: 100vh;
+        left: -102px;
+        position: absolute;
+        top: 80px;
+        width: 100vw;
+      }
+
       &-header {
+        position: relative;
+
         button {
           background: $background-color;
           border: none;
@@ -132,11 +143,28 @@
             cursor: pointer;
           }
         }
+
+        .cart-overlay-product-counter {
+          background: black;
+          border-radius: 50%;
+          height: 20px;
+          position: absolute;
+          right: -10px;
+          top: -7px;
+          text-align: center;
+          width: 20px;
+
+          h2 {
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+          }
+        }
       }
 
       &-body {
-        height: 100%;
-        left: 380px;
+        background-color: $background-color;
+        right: -55px;
         position: absolute;
         top: 80px;
 

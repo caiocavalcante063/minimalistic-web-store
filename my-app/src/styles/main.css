@@ -146,6 +146,19 @@
   margin-bottom: 20px;
 }
 
+.header .header-right-container .cart-overlay .fade-background {
+  background: rgba(57, 55, 72, 0.22);
+  height: 100vh;
+  left: -102px;
+  position: absolute;
+  top: 80px;
+  width: 100vw;
+}
+
+.header .header-right-container .cart-overlay-header {
+  position: relative;
+}
+
 .header .header-right-container .cart-overlay-header button {
   background: #ffffff;
   border: none;
@@ -161,9 +174,26 @@
   cursor: pointer;
 }
 
+.header .header-right-container .cart-overlay-header .cart-overlay-product-counter {
+  background: black;
+  border-radius: 50%;
+  height: 20px;
+  position: absolute;
+  right: -10px;
+  top: -7px;
+  text-align: center;
+  width: 20px;
+}
+
+.header .header-right-container .cart-overlay-header .cart-overlay-product-counter h2 {
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .header .header-right-container .cart-overlay-body {
-  height: 100%;
-  left: 380px;
+  background-color: #ffffff;
+  right: -55px;
   position: absolute;
   top: 80px;
 }

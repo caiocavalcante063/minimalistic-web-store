@@ -3,7 +3,6 @@ import { REMOVE_FROM_CART } from "../actions";
 
 const INITIAL_STATE = {
   cartItems: [],
-  totalPrice: 0,
 };
 
 const productOccurrenceVerifier = (state, action) => {

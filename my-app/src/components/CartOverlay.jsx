@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProductAttributes from "../components/ProductAttributes";
 import CartQuantityHandler from "../components/CartQuantityHandler";
+import CartProductCounter from "./CartProductCounter";
 import { connect } from "react-redux";
 import cartIcon from "../images/cartIcon.svg";
-import { getProductPrice } from "../utils/utils";
+import { getProductPrice, productsCounter } from "../utils/utils";
 
 export class CartOverlay extends Component {
   constructor() {
@@ -30,6 +31,7 @@ export class CartOverlay extends Component {
 
     return (
       <>
+        {open && <div className="fade-background"></div>}
         <div className="cart-overlay-header">
           <button
             type="button"
@@ -38,13 +40,16 @@ export class CartOverlay extends Component {
             }}
           >
             <img className="cart-overlay-icon" src={cartIcon} alt="cart icon" />
+            <CartProductCounter />
           </button>
         </div>
         {open && (
           <div className="cart-overlay-body">
             <h2 className="cart-overlay-body-title">
               My bag,
-              <span className="cart-overlay-body-title-quantity"> 2 items</span>
+              <span className="cart-overlay-body-title-quantity">{` ${productsCounter(
+                cartItems
+              )} ${productsCounter(cartItems) !== 1 ? "items" : "item"}`}</span>
             </h2>
             <div className="cart-overlay-body-products-container">
               {cartItems.map(

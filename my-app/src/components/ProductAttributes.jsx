@@ -4,8 +4,6 @@ import "../styles/main.css";
 export default class ProductAttributes extends Component {
   selectedAttributeHandler(attributeValue) {
     const { selectedAttributes } = this.props;
-    selectedAttributes &&
-      console.log(Object.entries(selectedAttributes)[0], attributeValue);
     return (
       selectedAttributes &&
       Object.entries(selectedAttributes)[0].some(
@@ -13,6 +11,7 @@ export default class ProductAttributes extends Component {
       )
     );
   }
+
   render() {
     const { attributes, handleCart } = this.props;
 
