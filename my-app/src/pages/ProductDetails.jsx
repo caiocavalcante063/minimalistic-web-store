@@ -15,6 +15,7 @@ class ProductDetails extends Component {
       productId: "",
       productDetails: {},
       selectedAttributes: {},
+      mainImage: "",
     };
 
     this.handleCart = this.handleCart.bind(this);
@@ -31,7 +32,10 @@ class ProductDetails extends Component {
           variables: { id: `${productId}` },
         })
         .then((result) =>
-          this.setState({ productDetails: result.data.product })
+          this.setState({
+            productDetails: result.data.product,
+            mainImage: result.data.product.gallery[0],
+          })
         )
     );
   }
@@ -50,7 +54,7 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const { productDetails, selectedAttributes } = this.state;
+    const { productDetails, selectedAttributes, mainImage } = this.state;
     const { currency } = this.props;
     const { brand, gallery, name, attributes, prices, description } =
       productDetails;
@@ -60,42 +64,52 @@ class ProductDetails extends Component {
       <div className="product-details">
         <div className="product-details-gallery-container">
           {gallery &&
-            gallery.map((image, index) => {
-              return <img key={index} src={image} alt={name} width="150px" />;
+            gallery.slice(0, 5).map((image, index) => {
+              return (
+                <button
+                  className="gallery-img"
+                  onClick={(e) => this.setState({ mainImage: e.target.src })}
+                >
+                  <img key={index} src={image} alt={name} />
+                </button>
+              );
             })}
         </div>
         <div className="product-details-main-img-container">
-          {gallery && <img src={gallery[0]} alt={name} width="300px" />}
+          {gallery && <img src={mainImage} alt={name} width="300px" />}
         </div>
-        <div className="product-details-title">
-          <h1>{brand}</h1>
-          <h1>{name}</h1>
-        </div>
-        <div className="product-details-attributes-container">
-          {attributes && (
-            <ProductAttributes
-              attributes={attributes}
-              handleCart={this.handleCart.bind(this)}
+        <div className="product-details-info">
+          <div className="product-details-info-title">
+            <h1>{brand}</h1>
+            <h1>{name}</h1>
+          </div>
+          <div className="product-details-info-attributes-container">
+            {attributes && (
+              <ProductAttributes
+                attributes={attributes}
+                handleCart={this.handleCart.bind(this)}
+                selectedAttributes={selectedAttributes}
+              />
+            )}
+          </div>
+          <div className="product-details-info-price-container">
+            <h2>PRICE:</h2>
+            <h2>{prices && `${price.currency.symbol}${price.amount}`}</h2>
+          </div>
+          <div className="product-details-info-cart-button-container">
+            <AddToCartButton
+              selectedAttributes={selectedAttributes}
+              productDetails={productDetails}
             />
-          )}
-        </div>
-        <div className="product-details-price-container">
-          <h2>PRICE:</h2>
-          <h2>{prices && `${price.currency.symbol}${price.amount}`}</h2>
-        </div>
-        <div className="div-details-cart-button-container">
-          <AddToCartButton
-            selectedAttributes={selectedAttributes}
-            productDetails={productDetails}
-          />
-        </div>
-        <div className="product-details-description-container">
-          {/* using element's html structure to create the product description */}
-          {description && (
-            <div
-              dangerouslySetInnerHTML={this.handleDescription(description)}
-            />
-          )}
+          </div>
+          <div className="product-details-info-description-container">
+            {/* using element's html structure to create the product description */}
+            {description && (
+              <div
+                dangerouslySetInnerHTML={this.handleDescription(description)}
+              />
+            )}
+          </div>
         </div>
       </div>
     );

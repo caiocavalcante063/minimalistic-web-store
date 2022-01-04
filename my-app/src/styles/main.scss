@@ -1,5 +1,6 @@
-@import "./config", "./header", "./productCard", "./category", "./attributes";
+@import "./config", "./header", "./productCard", "./category", "./attributes",
+  "./productDetails";
 
 body {
-  padding: 28px 102px;
+  padding: 0px 102px 28px 102px;
 }

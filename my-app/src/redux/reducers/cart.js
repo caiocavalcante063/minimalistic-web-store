@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   cartItems: [],
 };
 
+// reference for the next 2 functions below: https://dev.to/suprabhasupi/object-equality-in-javascript-15ff
 const isEqual = (obj1, obj2) => {
   var props1 = Object.getOwnPropertyNames(obj1);
   var props2 = Object.getOwnPropertyNames(obj2);
@@ -59,13 +60,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
 
       // if there's no occurrence, the product is added to the cart, else, the quantity of the product is updated
       if (!addToCartOcurrence) {
-        console.log("novo");
         return {
           ...state,
           cartItems: [...state.cartItems, action.product],
         };
       } else {
-        console.log("repetido");
         const addToCartMatchedProduct = matchedProductSearcher(state, action);
         const newQuantity = (state.cartItems[
           state.cartItems.indexOf(addToCartMatchedProduct)

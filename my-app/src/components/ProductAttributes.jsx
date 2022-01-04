@@ -2,25 +2,46 @@ import React, { Component } from "react";
 import "../styles/main.css";
 
 export default class ProductAttributes extends Component {
-  selectedAttributeHandler(attributeValue) {
-    const { selectedAttributes } = this.props;
-    console.log(selectedAttributes);
-    return (
-      selectedAttributes &&
-      Object.entries(selectedAttributes)[0].some(
-        (val) => val === attributeValue
-      )
-    );
+  constructor() {
+    super();
+
+    this.state = {
+      selectedAttributes: {},
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(attribute, value) {
+    const { selectedAttributes, handleCart } = this.props;
+
+    this.setState({ selectedAttributes });
+    handleCart({
+      [`${attribute.type} ${attribute.name}`]: value,
+    });
   }
 
   render() {
-    const { attributes, handleCart } = this.props;
+    const { attributes, selectedAttributes } = this.props;
 
     return attributes.map((attribute, index) => {
       return (
         <div key={index} className="attributes-container">
-          <h2 className="attribute-name">{`${attribute.name}:`}</h2>
+          <h2 className="attribute-name">{`${attribute.name.toUpperCase()}:`}</h2>
           {attribute.items.map(({ value, index }) => {
+            const checkSwatch = attribute.type === "swatch" ? "-swatch" : "";
+            const selected =
+              selectedAttributes &&
+              Object.entries(selectedAttributes).length > 0 &&
+              Object.entries(selectedAttributes).some(
+                (val) =>
+                  val[0] === `${attribute.type} ${attribute.name}` &&
+                  val[1] === value
+              )
+                ? `selected${checkSwatch}`
+                : `not-selected${checkSwatch}`;
+
+            selectedAttributes && console.log(selectedAttributes);
             return (
               <button
                 key={`${index}${value}`}
@@ -29,16 +50,8 @@ export default class ProductAttributes extends Component {
                 style={{
                   background: attribute.type === "swatch" ? value : "white",
                 }}
-                onClick={() =>
-                  handleCart({
-                    [`${attribute.type} ${attribute.name}`]: value,
-                  })
-                }
-                className={
-                  this.selectedAttributeHandler(value) === true
-                    ? "selected"
-                    : "not-selected"
-                }
+                onClick={() => this.handleClick(attribute, value)}
+                className={selected}
               >
                 {attribute.type === "swatch" ? "" : value}
               </button>
