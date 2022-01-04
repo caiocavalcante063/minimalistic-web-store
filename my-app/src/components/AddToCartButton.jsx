@@ -15,12 +15,17 @@ class AddToCartButton extends Component {
   }
 
   render() {
-    const { selectedAttributes } = this.props;
+    const { selectedAttributes, productDetails } = this.props;
 
     return (
       <div>
         <button
-          disabled={Object.keys(selectedAttributes).length <= 0}
+          disabled={
+            (selectedAttributes && Object.keys(selectedAttributes).length) !==
+            (productDetails &&
+              productDetails.attributes &&
+              productDetails.attributes.length)
+          }
           onClick={this.handleClick}
         >
           ADD TO CART

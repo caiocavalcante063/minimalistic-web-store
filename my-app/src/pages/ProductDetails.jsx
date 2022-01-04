@@ -103,7 +103,7 @@ class ProductDetails extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  currency: state.currency.currency,
+  currency: state.currentCurrency.currency,
 });
 
 export default connect(mapStateToProps)(ProductDetails);

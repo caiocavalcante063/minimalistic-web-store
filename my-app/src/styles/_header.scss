@@ -119,11 +119,12 @@
     .cart-overlay {
       .fade-background {
         background: rgba(57, 55, 72, 0.22);
-        height: 100vh;
+        height: 4910px;
         left: -102px;
         position: absolute;
-        top: 80px;
-        width: 100vw;
+        top: 79px;
+        width: 100vmax;
+        z-index: 2;
       }
 
       &-header {
@@ -164,9 +165,11 @@
 
       &-body {
         background-color: $background-color;
-        right: -55px;
+        right: -10px;
         position: absolute;
-        top: 80px;
+        top: 79px;
+        width: 325px;
+        z-index: 3;
 
         &-title {
           font-size: 16px;
@@ -180,9 +183,10 @@
         }
 
         &-products-container {
-          background-color: white;
-          padding: 8px 16px;
-          width: 325px;
+          background-color: $background-color;
+          padding-bottom: 20px;
+          padding-left: 16px;
+          width: 293px;
 
           .cart-overlay-body-product {
             height: 137px;
@@ -253,6 +257,7 @@
               button {
                 background-color: white;
                 border: 1px solid black;
+                cursor: pointer;
                 font-size: 30px;
                 font-weight: 200;
                 height: 24px;
@@ -278,7 +283,10 @@
         }
 
         &-total-container {
+          background-color: $background-color;
           position: relative;
+          width: 293px;
+
           h2 {
             font-size: 16px;
             font-weight: 500;
@@ -286,7 +294,7 @@
             span {
               font-weight: 700;
               position: absolute;
-              right: 36px;
+              right: 8px;
             }
           }
         }
@@ -315,7 +323,7 @@
             font-size: 14px;
             font-weight: 600;
             height: 43px;
-            margin-right: 36px;
+            // margin-right: 36px;
             width: 140px;
           }
         }

@@ -4,6 +4,7 @@ import "../styles/main.css";
 export default class ProductAttributes extends Component {
   selectedAttributeHandler(attributeValue) {
     const { selectedAttributes } = this.props;
+    console.log(selectedAttributes);
     return (
       selectedAttributes &&
       Object.entries(selectedAttributes)[0].some(

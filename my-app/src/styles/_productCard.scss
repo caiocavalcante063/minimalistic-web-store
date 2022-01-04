@@ -6,6 +6,7 @@
   height: 444px;
   justify-content: center;
   margin-bottom: 103px;
+  position: relative;
   width: 386px;
 
   a {
@@ -39,21 +40,56 @@
   }
 }
 
+.product-card-hover-cart-button {
+  visibility: hidden;
+}
+
+.product-card:hover {
+  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+
+  .product-card-hover-cart-button {
+    background: $accent-color;
+    border: none;
+    border-radius: 50%;
+    bottom: 70px;
+    cursor: pointer;
+    height: 52px;
+    position: absolute;
+    right: 25px;
+    visibility: visible;
+    width: 52px;
+
+    img {
+      bottom: 15px;
+      height: 21.6px;
+      position: absolute;
+      right: 15px;
+      width: 24px;
+    }
+  }
+}
+
 .product-card-out {
   cursor: default;
-  opacity: 0.5;
   pointer-events: none;
+
+  &-fade {
+    background: rgba(255, 255, 255, 0.4);
+    height: 444px;
+    position: absolute;
+    width: 386px;
+  }
 
   .out-of-stock {
     position: relative;
 
     &-text {
-      color: black;
+      color: #8d8f9a;
       display: flex;
       font-size: 24px;
       font-weight: 400;
       position: absolute;
-      top: 190px;
+      top: 150px;
       left: 92px;
     }
   }

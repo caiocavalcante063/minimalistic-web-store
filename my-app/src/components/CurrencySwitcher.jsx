@@ -73,7 +73,7 @@ class CurrencySwitcher extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  label: state.currency.label,
+  label: state.currentCurrency.label,
 });
 
 const mapDispatchToProps = (dispatch) => ({

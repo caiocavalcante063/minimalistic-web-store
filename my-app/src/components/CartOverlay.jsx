@@ -115,8 +115,8 @@ export class CartOverlay extends Component {
 
 const mapStateToProps = (state) => ({
   cartItems: state.cart.cartItems,
-  currency: state.currency.currency,
-  currencyLabel: state.currency.label,
+  currency: state.currentCurrency.currency,
+  currencyLabel: state.currentCurrency.label,
 });
 
 export default connect(mapStateToProps)(CartOverlay);

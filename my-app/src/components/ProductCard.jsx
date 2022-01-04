@@ -1,8 +1,46 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { PRODUCT_QUERY } from "../graphQL/queries";
+import { client } from "..";
+import cartIconWhite from "../images/cartIconWhite.svg";
+import { addToCartAction } from "../redux/actions";
 
 class ProductCard extends Component {
+  constructor() {
+    super();
+
+    this.productHoverAddToCart = this.productHoverAddToCart.bind(this);
+  }
+
+  productHoverAddToCart(e) {
+    const { addToCart } = this.props;
+    let selectedAttributes = {};
+    client
+      .query({
+        query: PRODUCT_QUERY,
+        variables: { id: `${e.target.id}` },
+      })
+      .then((result) => {
+        result.data.product.attributes.map((attribute) => {
+          const key = `${attribute.type} ${attribute.name}`;
+          selectedAttributes = {
+            ...selectedAttributes,
+            [key]: attribute.items[0].value,
+          };
+          return selectedAttributes;
+        });
+
+        const productObj = {
+          selectedAttributes,
+          productDetails: result.data.product,
+          quantity: 1,
+        };
+        return productObj;
+      })
+      .then((productObj) => addToCart(productObj));
+  }
+
   render() {
     const { id, name, inStock, gallery, prices, brand, currency } = this.props;
 
@@ -10,6 +48,24 @@ class ProductCard extends Component {
 
     return (
       <div className={`product-card${inStock === false ? "-out" : ""}`} id={id}>
+        {inStock === false && <div className="product-card-out-fade"></div>}
+        {inStock === true && (
+          <button
+            className="product-card-hover-cart-button"
+            type="button"
+            onClick={this.productHoverAddToCart}
+            id={id}
+          >
+            <img
+              className="product-card-hover-cart-img"
+              id={id}
+              src={cartIconWhite}
+              width="0"
+              alt="cart icon"
+              value={id}
+            />
+          </button>
+        )}
         <Link to={`/product-details/${id}`}>
           {inStock === false && (
             <div className="out-of-stock">
@@ -28,7 +84,11 @@ class ProductCard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  currency: state.currency.currency,
+  currency: state.currentCurrency.currency,
 });
 
-export default connect(mapStateToProps)(ProductCard);
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (product) => dispatch(addToCartAction(product)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);
