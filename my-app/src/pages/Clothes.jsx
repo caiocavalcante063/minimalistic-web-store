@@ -5,7 +5,7 @@ import "../styles/main.css";
 export default class Clothes extends Component {
   render() {
     return (
-      <div>
+      <div className="body-wrapper">
         <h1 className="category-title">Clothes</h1>
         <Category />
       </div>

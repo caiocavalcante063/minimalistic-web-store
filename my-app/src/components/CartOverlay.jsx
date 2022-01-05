@@ -8,13 +8,6 @@ import cartIcon from "../images/cartIcon.svg";
 import { getProductPrice, productsCounter } from "../utils/utils";
 
 export class CartOverlay extends Component {
-  constructor() {
-    super();
-    this.state = {
-      open: false,
-    };
-  }
-
   getTotalPrice() {
     const { currency, cartItems } = this.props;
     let totalPrice = 0;
@@ -26,24 +19,23 @@ export class CartOverlay extends Component {
   }
 
   render() {
-    const { open } = this.state;
-    const { cartItems, currency, currencyLabel } = this.props;
+    const {
+      cartItems,
+      currency,
+      currencyLabel,
+      handleCartOverlayTrigger,
+      cartOverlayIsOpen,
+    } = this.props;
 
     return (
       <>
-        {open && <div className="fade-background"></div>}
         <div className="cart-overlay-header">
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({ open: !open });
-            }}
-          >
+          <button type="button" onClick={handleCartOverlayTrigger}>
             <img className="cart-overlay-icon" src={cartIcon} alt="cart icon" />
             <CartProductCounter />
           </button>
         </div>
-        {open && (
+        {cartOverlayIsOpen && (
           <div className="cart-overlay-body">
             <h2 className="cart-overlay-body-title">
               My bag,

@@ -11,9 +11,15 @@ export default class Header extends Component {
 
     this.state = {
       selectedCategory: "all",
+      cartOverlayIsOpen: false,
     };
 
     this.handleLocation = this.handleLocation.bind(this);
+    this.handleCartOverlayTrigger = this.handleCartOverlayTrigger.bind(this);
+  }
+
+  componentDidMount() {
+    this.handleLocation();
   }
 
   handleLocation() {
@@ -22,52 +28,59 @@ export default class Header extends Component {
     this.setState({ selectedCategory });
   }
 
-  componentDidMount() {
-    this.handleLocation();
+  handleCartOverlayTrigger() {
+    const { cartOverlayIsOpen } = this.state;
+    this.setState({ cartOverlayIsOpen: !cartOverlayIsOpen });
   }
 
   render() {
-    const { selectedCategory } = this.state;
+    const { selectedCategory, cartOverlayIsOpen } = this.state;
     return (
-      <div className="header">
-        <div className={"header-left-container"}>
-          <div
-            className={`header-link-page${
-              selectedCategory === "all" ? "-selected" : ""
-            }`}
-            onClick={this.handleLocation}
-          >
-            <Link to="/">ALL</Link>
+      <>
+        {cartOverlayIsOpen && <div className="fade-background"></div>}
+        <div className="header">
+          <div className={"header-left-container"}>
+            <div
+              className={`header-link-page${
+                selectedCategory === "all" ? "-selected" : ""
+              }`}
+              onClick={this.handleLocation}
+            >
+              <Link to="/">ALL</Link>
+            </div>
+            <div
+              className={`header-link-page${
+                selectedCategory === "clothes" ? "-selected" : ""
+              }`}
+              onClick={this.handleLocation}
+            >
+              <Link to="/clothes">CLOTHES</Link>
+            </div>
+            <div
+              className={`header-link-page${
+                selectedCategory === "tech" ? "-selected" : ""
+              }`}
+              onClick={this.handleLocation}
+            >
+              <Link to="/tech">TECH</Link>
+            </div>
           </div>
-          <div
-            className={`header-link-page${
-              selectedCategory === "clothes" ? "-selected" : ""
-            }`}
-            onClick={this.handleLocation}
-          >
-            <Link to="/clothes">CLOTHES</Link>
+          <div className="header-center-container">
+            <img src={logo} alt="logo" width="41px" />
           </div>
-          <div
-            className={`header-link-page${
-              selectedCategory === "tech" ? "-selected" : ""
-            }`}
-            onClick={this.handleLocation}
-          >
-            <Link to="/tech">TECH</Link>
+          <div className="header-right-container">
+            <div className="currency-switcher">
+              <CurrencySwitcher />
+            </div>
+            <div className="cart-overlay">
+              <CartOverlay
+                handleCartOverlayTrigger={this.handleCartOverlayTrigger}
+                cartOverlayIsOpen={cartOverlayIsOpen}
+              />
+            </div>
           </div>
         </div>
-        <div className="header-center-container">
-          <img src={logo} alt="logo" width="41px" />
-        </div>
-        <div className="header-right-container">
-          <div className="currency-switcher">
-            <CurrencySwitcher />
-          </div>
-          <div className="cart-overlay">
-            <CartOverlay />
-          </div>
-        </div>
-      </div>
+      </>
     );
   }
 }

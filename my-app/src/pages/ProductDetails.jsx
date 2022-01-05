@@ -54,60 +54,60 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const { productDetails, selectedAttributes, mainImage, orderIndex } =
-      this.state;
+    const { productDetails, selectedAttributes, mainImage } = this.state;
     const { currency } = this.props;
     const { brand, gallery, name, attributes, prices, description } =
       productDetails;
     const price = getProductPrice(prices, currency);
 
     return (
-      <div className="product-details">
-        <div className="product-details-gallery-container">
-          {gallery &&
-            gallery.slice(0, 5).map((image, index) => {
-              return (
-                <button
-                  className="gallery-img"
-                  onClick={(e) => this.setState({ mainImage: e.target.src })}
-                  key={index}
-                >
-                  <img src={image} alt={name} />
-                </button>
-              );
-            })}
-        </div>
-        <div className="product-details-main-img-container">
-          {gallery && <img src={mainImage} alt={name} width="300px" />}
-        </div>
-        <div className="product-details-info">
-          <div className="product-details-info-title">
-            <h1>{brand}</h1>
-            <h1>{name}</h1>
+      <div className="body-wrapper">
+        <div className="product-details">
+          <div className="product-details-gallery-container">
+            {gallery &&
+              gallery.slice(0, 5).map((image, index) => {
+                return (
+                  <button
+                    className="gallery-img"
+                    onClick={(e) => this.setState({ mainImage: e.target.src })}
+                    key={index}
+                  >
+                    <img src={image} alt={name} />
+                  </button>
+                );
+              })}
           </div>
-          <div className="product-details-info-attributes-container">
-            {attributes && (
-              <ProductAttributes
-                attributes={attributes}
-                handleCart={this.handleCart.bind(this)}
+          <div className="product-details-main-img-container">
+            {gallery && <img src={mainImage} alt={name} width="300px" />}
+          </div>
+          <div className="product-details-info">
+            <div className="product-details-info-title">
+              <h1>{brand}</h1>
+              <h1>{name}</h1>
+            </div>
+            <div className="product-details-info-attributes-container">
+              {attributes && (
+                <ProductAttributes
+                  attributes={attributes}
+                  handleCart={this.handleCart.bind(this)}
+                  selectedAttributes={selectedAttributes}
+                />
+              )}
+            </div>
+            <div className="product-details-info-price-container">
+              <h2>PRICE:</h2>
+              <h2>{prices && `${price.currency.symbol}${price.amount}`}</h2>
+            </div>
+            <div className="product-details-info-cart-button-container">
+              <AddToCartButton
                 selectedAttributes={selectedAttributes}
+                productDetails={productDetails}
               />
-            )}
-          </div>
-          <div className="product-details-info-price-container">
-            <h2>PRICE:</h2>
-            <h2>{prices && `${price.currency.symbol}${price.amount}`}</h2>
-          </div>
-          <div className="product-details-info-cart-button-container">
-            <AddToCartButton
-              selectedAttributes={selectedAttributes}
-              productDetails={productDetails}
-            />
-          </div>
-          <div className="product-details-info-description-container">
+            </div>
             {/* using element's html structure to create the product description */}
             {description && (
               <div
+                className="product-details-info-description-container"
                 dangerouslySetInnerHTML={this.handleDescription(description)}
               />
             )}

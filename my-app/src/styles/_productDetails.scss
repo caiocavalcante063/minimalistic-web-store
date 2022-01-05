@@ -1,6 +1,5 @@
 .product-details {
   display: flex;
-  // margin-bottom: 72px;
 
   &-gallery-container {
     display: flex;
@@ -112,13 +111,21 @@
         font-size: 16px;
         font-weight: 600;
         height: 52px;
-        margin-bottom: 56px;
+        margin-bottom: 40px;
         width: 288px;
       }
 
       button:disabled {
         cursor: default;
         opacity: 0.5;
+      }
+    }
+
+    &-description-container {
+      p {
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
       }
     }
   }

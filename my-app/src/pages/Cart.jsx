@@ -62,8 +62,8 @@ class Cart extends Component {
     const { cartItems, currency } = this.props;
 
     return (
-      <>
-        <h1 className="category-title">CART</h1>
+      <div className="body-wrapper">
+        <h1 className="category-title-cart">CART</h1>
         <div className="cart-container">
           {cartItems.map(
             (
@@ -140,7 +140,7 @@ class Cart extends Component {
             }
           )}
         </div>
-      </>
+      </div>
     );
   }
 }

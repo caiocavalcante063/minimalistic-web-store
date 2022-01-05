@@ -4,9 +4,10 @@
   display: flex;
   height: 80px;
   margin-bottom: 72px;
+  padding: 0 102px;
   position: relative;
   justify-content: space-between;
-  width: 100%;
+  z-index: 6;
 
   #{&}-left-container {
     align-items: center;
@@ -14,7 +15,6 @@
     display: flex;
     gap: 32px;
     height: 100%;
-    z-index: 4;
 
     a {
       color: $primary-color;
@@ -39,7 +39,6 @@
   }
 
   #{&}-center-container {
-    z-index: 4;
     img {
       height: 30.18px;
       width: 31.16px;
@@ -55,12 +54,12 @@
     .currency-switcher {
       &-header {
         position: relative;
-        z-index: 4;
 
         button {
           background: $background-color;
           border: none;
           font-size: 18px;
+          font-weight: 500;
           height: 29px;
           width: 38px;
 
@@ -96,13 +95,15 @@
         gap: 21px;
         height: auto;
         position: absolute;
+        right: 85px;
         top: 60px;
         width: 114px;
-        z-index: 4;
 
         button {
           background: $background-color;
           border: none;
+          font-size: 18px;
+          font-weight: 500;
           height: 29px;
           width: 54px;
 
@@ -122,24 +123,8 @@
     }
 
     .cart-overlay {
-      z-index: 3;
-      .fade-background {
-        background: rgba(57, 55, 72, 0.22);
-        position: fixed;
-        height: 100vh;
-        left: 0;
-        // min-height: 100vh;
-        // left: -117px;
-        // margin: 0;
-        // position: absolute;
-        // top: 79px;
-        width: 100vw;
-        z-index: 3;
-      }
-
       &-header {
         position: relative;
-        z-index: 4;
 
         button {
           background: $background-color;
@@ -181,9 +166,9 @@
         background-color: $background-color;
         right: -10px;
         position: absolute;
+        right: 90px;
         top: 79px;
         width: 325px;
-        z-index: 4;
 
         &-title {
           font-size: 16px;
@@ -356,11 +341,20 @@
             font-size: 14px;
             font-weight: 600;
             height: 43px;
-            // margin-right: 36px;
             width: 140px;
           }
         }
       }
     }
   }
+}
+
+.fade-background {
+  z-index: 1;
+  background: rgba(57, 55, 72, 0.88);
+  height: 100vh;
+  left: 0;
+  opacity: 0.22;
+  position: fixed;
+  width: 100vw;
 }
