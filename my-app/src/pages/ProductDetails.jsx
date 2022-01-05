@@ -54,7 +54,8 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const { productDetails, selectedAttributes, mainImage } = this.state;
+    const { productDetails, selectedAttributes, mainImage, orderIndex } =
+      this.state;
     const { currency } = this.props;
     const { brand, gallery, name, attributes, prices, description } =
       productDetails;
@@ -69,8 +70,9 @@ class ProductDetails extends Component {
                 <button
                   className="gallery-img"
                   onClick={(e) => this.setState({ mainImage: e.target.src })}
+                  key={index}
                 >
-                  <img key={index} src={image} alt={name} />
+                  <img src={image} alt={name} />
                 </button>
               );
             })}

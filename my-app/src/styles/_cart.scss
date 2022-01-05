@@ -95,12 +95,33 @@
       &-gallery-container {
         height: 185px;
         padding-top: 24.5px;
+        position: relative;
         width: 141px;
 
-        img {
+        img.product-img {
           height: 185px;
           object-fit: cover;
           width: 141px;
+        }
+
+        img.left-arrow {
+          cursor: pointer;
+          height: 12px;
+          left: 9px;
+          position: absolute;
+          top: 104.5px;
+          width: 6px;
+          filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.7));
+        }
+
+        img.right-arrow {
+          cursor: pointer;
+          height: 12px;
+          position: absolute;
+          right: 9px;
+          top: 104.5px;
+          width: 6px;
+          filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.7));
         }
       }
     }

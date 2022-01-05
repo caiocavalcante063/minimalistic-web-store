@@ -5,11 +5,18 @@ import { addToCartAction } from "../redux/actions";
 class AddToCartButton extends Component {
   constructor() {
     super();
+
     this.handleClick = this.handleClick.bind(this);
   }
+
   handleClick() {
     const { selectedAttributes, productDetails, addToCart } = this.props;
-    const newProduct = { selectedAttributes, productDetails, quantity: 1 };
+
+    const newProduct = {
+      selectedAttributes,
+      productDetails,
+      quantity: 1,
+    };
 
     addToCart(newProduct);
   }

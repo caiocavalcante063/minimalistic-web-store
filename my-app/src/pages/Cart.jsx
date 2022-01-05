@@ -3,17 +3,73 @@ import ProductAttributes from "../components/ProductAttributes";
 import CartQuantityHandler from "../components/CartQuantityHandler";
 import { connect } from "react-redux";
 import { getProductPrice } from "../utils/utils";
+import leftArrow from "../images/leftArrow.svg";
+import rightArrow from "../images/rightArrow.svg";
 import "../styles/main.css";
 
 class Cart extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      galleryIndexes: [],
+    };
+
+    this.handleCurrentImage = this.handleCurrentImage.bind(this);
+    this.galleryIndexFinder = this.galleryIndexFinder.bind(this);
+    this.imageIndex = this.imageIndex.bind(this);
+  }
+
+  componentDidMount() {
+    // setting initial indexes for the carousels
+    const { cartItems } = this.props;
+    this.setState({
+      galleryIndexes: cartItems.map(({ productIndex }) => [productIndex, 0]),
+    });
+  }
+
+  galleryIndexFinder(productIndex) {
+    const { galleryIndexes } = this.state;
+    const currIndex = galleryIndexes.find((index) => index[0] === productIndex);
+    return currIndex;
+  }
+
+  handleCurrentImage(productGallery, productIndex, e) {
+    const { galleryIndexes } = this.state;
+    let currIndex = galleryIndexes.find((index) => index[0] === productIndex);
+
+    e.target.className.includes("right")
+      ? currIndex[1] >= productGallery.length - 1
+        ? (currIndex[1] = 0)
+        : (currIndex[1] += 1)
+      : currIndex[1] <= 0
+      ? (currIndex[1] = productGallery.length - 1)
+      : (currIndex[1] -= 1);
+
+    this.setState({ galleryIndexes: [...galleryIndexes, currIndex] });
+  }
+
+  imageIndex(index) {
+    const { galleryIndexes } = this.state;
+    const currIndex =
+      galleryIndexes &&
+      galleryIndexes.length > 0 &&
+      this.galleryIndexFinder(index)[1];
+    return currIndex;
+  }
+
   render() {
     const { cartItems, currency } = this.props;
+
     return (
       <>
         <h1 className="category-title">CART</h1>
         <div className="cart-container">
           {cartItems.map(
-            ({ productDetails, selectedAttributes, quantity }, index) => {
+            (
+              { productDetails, selectedAttributes, quantity, productIndex },
+              index
+            ) => {
               const price = getProductPrice(productDetails.prices, currency);
 
               return (
@@ -46,10 +102,36 @@ class Cart extends Component {
                     </div>
                     <div className="cart-item-right-gallery-container">
                       <img
+                        className="left-arrow"
+                        src={leftArrow}
+                        alt="previous"
+                        onClick={(e) =>
+                          this.handleCurrentImage(
+                            productDetails.gallery,
+                            productIndex,
+                            e
+                          )
+                        }
+                      />
+                      <img
+                        className="right-arrow"
+                        src={rightArrow}
+                        alt="next"
+                        onClick={(e) =>
+                          this.handleCurrentImage(
+                            productDetails.gallery,
+                            productIndex,
+                            e
+                          )
+                        }
+                      />
+                      <img
+                        className="product-img"
                         key={index}
-                        src={productDetails.gallery[0]}
+                        src={
+                          productDetails.gallery[this.imageIndex(productIndex)]
+                        }
                         alt={productDetails.name}
-                        style={{ width: "141px", height: "185px" }}
                       />
                     </div>
                   </div>

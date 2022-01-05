@@ -3,6 +3,7 @@ import { REMOVE_FROM_CART } from "../actions";
 
 const INITIAL_STATE = {
   cartItems: [],
+  indexCounter: 0,
 };
 
 // reference for the next 2 functions below: https://dev.to/suprabhasupi/object-equality-in-javascript-15ff
@@ -60,9 +61,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
 
       // if there's no occurrence, the product is added to the cart, else, the quantity of the product is updated
       if (!addToCartOcurrence) {
+        action.product.productIndex = state.indexCounter;
         return {
           ...state,
           cartItems: [...state.cartItems, action.product],
+          indexCounter: state.indexCounter + 1,
         };
       } else {
         const addToCartMatchedProduct = matchedProductSearcher(state, action);

@@ -41,7 +41,6 @@ export default class ProductAttributes extends Component {
                 ? `selected${checkSwatch}`
                 : `not-selected${checkSwatch}`;
 
-            selectedAttributes && console.log(selectedAttributes);
             return (
               <button
                 key={`${index}${value}`}
