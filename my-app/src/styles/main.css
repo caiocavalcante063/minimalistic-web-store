@@ -29,11 +29,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 32px;
   height: 100%;
+  z-index: 4;
 }
 
 .header .header-left-container a {
@@ -57,6 +59,10 @@
   color: #5ece7b;
 }
 
+.header .header-center-container {
+  z-index: 4;
+}
+
 .header .header-center-container img {
   height: 30.18px;
   width: 31.16px;
@@ -77,6 +83,7 @@
 
 .header .header-right-container .currency-switcher-header {
   position: relative;
+  z-index: 4;
 }
 
 .header .header-right-container .currency-switcher-header button {
@@ -128,6 +135,7 @@
   position: absolute;
   top: 60px;
   width: 114px;
+  z-index: 4;
 }
 
 .header .header-right-container .currency-switcher-body button {
@@ -155,17 +163,16 @@
 
 .header .header-right-container .cart-overlay .fade-background {
   background: rgba(57, 55, 72, 0.22);
-  min-height: 100vh;
-  left: -117px;
-  margin: 0;
-  position: absolute;
-  top: 79px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
   width: 100vw;
   z-index: 3;
 }
 
 .header .header-right-container .cart-overlay-header {
   position: relative;
+  z-index: 4;
 }
 
 .header .header-right-container .cart-overlay-header button {
@@ -215,7 +222,7 @@
   position: absolute;
   top: 79px;
   width: 325px;
-  z-index: 3;
+  z-index: 4;
 }
 
 .header .header-right-container .cart-overlay-body-title {
