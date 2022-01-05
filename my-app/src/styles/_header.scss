@@ -117,14 +117,16 @@
     }
 
     .cart-overlay {
+      z-index: 3;
       .fade-background {
         background: rgba(57, 55, 72, 0.22);
-        height: 100vh;
-        left: -102px;
+        min-height: 100vh;
+        left: -117px;
+        margin: 0;
         position: absolute;
         top: 79px;
-        width: 100vmax;
-        z-index: 2;
+        width: 100vw;
+        z-index: 3;
       }
 
       &-header {
@@ -146,17 +148,20 @@
         }
 
         .cart-overlay-product-counter {
+          align-items: center;
           background: black;
           border-radius: 50%;
+          display: flex;
           height: 20px;
+          justify-content: center;
           position: absolute;
           right: -10px;
           top: -7px;
-          text-align: center;
           width: 20px;
 
           h2 {
             color: white;
+            font-family: "Roboto", sans-serif;
             font-size: 14px;
             font-weight: 700;
           }

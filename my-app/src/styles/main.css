@@ -149,14 +149,19 @@
   margin-bottom: 20px;
 }
 
+.header .header-right-container .cart-overlay {
+  z-index: 3;
+}
+
 .header .header-right-container .cart-overlay .fade-background {
   background: rgba(57, 55, 72, 0.22);
-  height: 100vh;
-  left: -102px;
+  min-height: 100vh;
+  left: -117px;
+  margin: 0;
   position: absolute;
   top: 79px;
-  width: 100vmax;
-  z-index: 2;
+  width: 100vw;
+  z-index: 3;
 }
 
 .header .header-right-container .cart-overlay-header {
@@ -179,18 +184,27 @@
 }
 
 .header .header-right-container .cart-overlay-header .cart-overlay-product-counter {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: black;
   border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   height: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: absolute;
   right: -10px;
   top: -7px;
-  text-align: center;
   width: 20px;
 }
 
 .header .header-right-container .cart-overlay-header .cart-overlay-product-counter h2 {
   color: white;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 700;
 }
@@ -670,7 +684,141 @@
   opacity: 0.5;
 }
 
+.cart-container {
+  margin-top: 59px;
+}
+
+.cart-container .cart-item {
+  border-top: 1px solid #e5e5e5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 1089px;
+}
+
+.cart-container .cart-item-left-brand-name {
+  color: #1d1f22;
+  font-size: 30px;
+  font-weight: 600;
+  padding-top: 20px;
+}
+
+.cart-container .cart-item-left-name {
+  color: #1d1f22;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.cart-container .cart-item-left-price {
+  color: #1d1f22;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.cart-container .cart-item-left-attributes-container .attributes-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 12px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 20px;
+  margin-top: 24px;
+  max-width: 300px;
+}
+
+.cart-container .cart-item-left-attributes-container .attributes-container .attribute-name {
+  display: none;
+}
+
+.cart-container .cart-item-left-attributes-container .attributes-container button {
+  border: 1px solid black;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 45px;
+  width: 63px;
+}
+
+.cart-container .cart-item-left-attributes-container .attributes-container button.selected {
+  background: black !important;
+  color: #ffffff;
+}
+
+.cart-container .cart-item-left-attributes-container .attributes-container button.selected-swatch {
+  -webkit-box-shadow: 3px 3px 3px #7e7e7e;
+          box-shadow: 3px 3px 3px #7e7e7e;
+}
+
+.cart-container .cart-item-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 25px;
+}
+
+.cart-container .cart-item-right-quantity-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 24px;
+  font-weight: 500;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-bottom: 20px;
+  padding-top: 24.5px;
+  width: 24px;
+}
+
+.cart-container .cart-item-right-quantity-container button {
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 45px;
+  font-weight: 100;
+  height: 45px;
+  line-height: 25px;
+  width: 45px;
+}
+
+.cart-container .cart-item-right-gallery-container {
+  height: 185px;
+  padding-top: 24.5px;
+  width: 141px;
+}
+
+.cart-container .cart-item-right-gallery-container img {
+  height: 185px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 141px;
+}
+
 body {
   padding: 0px 102px 28px 102px;
+}
+
+.category-title {
+  font-size: 42px;
+  font-weight: 400;
 }
 /*# sourceMappingURL=main.css.map */

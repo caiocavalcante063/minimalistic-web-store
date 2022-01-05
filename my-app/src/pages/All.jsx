@@ -6,7 +6,7 @@ export default class All extends Component {
   render() {
     return (
       <div>
-        <h1>All</h1>
+        <h1 className="category-title">All</h1>
         <Category />
       </div>
     );

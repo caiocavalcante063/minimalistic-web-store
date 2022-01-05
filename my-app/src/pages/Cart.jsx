@@ -10,40 +10,54 @@ class Cart extends Component {
     const { cartItems, currency } = this.props;
     return (
       <>
-        <h1>CART</h1>
-        {cartItems.map(
-          ({ productDetails, selectedAttributes, quantity }, index) => {
-            const price = getProductPrice(productDetails.prices, currency);
+        <h1 className="category-title">CART</h1>
+        <div className="cart-container">
+          {cartItems.map(
+            ({ productDetails, selectedAttributes, quantity }, index) => {
+              const price = getProductPrice(productDetails.prices, currency);
 
-            return (
-              <div className="cart-item" key={index}>
-                <h2 className="cart-item-brand-name">{productDetails.brand}</h2>
-                <h2 className="cart-item-name">{productDetails.name}</h2>
-                {/* rounds prices to 2 decimal places */}
-                <h2 className="cart-item-price">{`${price.currency.symbol}${
-                  Math.round(price.amount * quantity * 100) / 100
-                }`}</h2>
-                <div className="cart-item-attributes-container">
-                  <ProductAttributes attributes={productDetails.attributes} />
+              return (
+                <div className="cart-item" key={index}>
+                  <div className="cart-item-left">
+                    <h2 className="cart-item-left-brand-name">
+                      {productDetails.brand}
+                    </h2>
+                    <h2 className="cart-item-left-name">
+                      {productDetails.name}
+                    </h2>
+                    {/* rounds prices to 2 decimal places */}
+                    <h2 className="cart-item-left-price">{`${
+                      price.currency.symbol
+                    }${Math.round(price.amount * quantity * 100) / 100}`}</h2>
+                    <div className="cart-item-left-attributes-container">
+                      <ProductAttributes
+                        attributes={productDetails.attributes}
+                        selectedAttributes={selectedAttributes}
+                      />
+                    </div>
+                  </div>
+                  <div className="cart-item-right">
+                    <div className="cart-item-right-quantity-container">
+                      <CartQuantityHandler
+                        quantity={quantity}
+                        productDetails={productDetails}
+                        selectedAttributes={selectedAttributes}
+                      />
+                    </div>
+                    <div className="cart-item-right-gallery-container">
+                      <img
+                        key={index}
+                        src={productDetails.gallery[0]}
+                        alt={productDetails.name}
+                        style={{ width: "141px", height: "185px" }}
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div className="cart-item-quantity-container">
-                  <CartQuantityHandler
-                    quantity={quantity}
-                    productDetails={productDetails}
-                    selectedAttributes={selectedAttributes}
-                  />
-                </div>
-                <div className="cart-item-gallery-container">
-                  {productDetails.gallery.map((image, index) => {
-                    return (
-                      <img key={index} src={image} alt={productDetails.name} />
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          }
-        )}
+              );
+            }
+          )}
+        </div>
       </>
     );
   }

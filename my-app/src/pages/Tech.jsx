@@ -6,7 +6,7 @@ export default class Tech extends Component {
   render() {
     return (
       <div>
-        <h1>Tech</h1>
+        <h1 className="category-title">Tech</h1>
         <Category />
       </div>
     );

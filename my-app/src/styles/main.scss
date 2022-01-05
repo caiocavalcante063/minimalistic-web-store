@@ -1,6 +1,11 @@
 @import "./config", "./header", "./productCard", "./category", "./attributes",
-  "./productDetails";
+  "./productDetails", "./cart";
 
 body {
   padding: 0px 102px 28px 102px;
+}
+
+.category-title {
+  font-size: 42px;
+  font-weight: 400;
 }
