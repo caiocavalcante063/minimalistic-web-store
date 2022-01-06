@@ -34,13 +34,8 @@ export class CartOverlay extends Component {
   }
 
   render() {
-    const {
-      cartItems,
-      currency,
-      currencyLabel,
-      handleCartOverlayTrigger,
-      cartOverlayIsOpen,
-    } = this.props;
+    const { cartItems, currency, currencyLabel, cartOverlayIsOpen } =
+      this.props;
 
     return (
       <>
