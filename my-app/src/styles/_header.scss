@@ -350,11 +350,20 @@
 }
 
 .fade-background {
-  z-index: 1;
+  z-index: 6;
   background: rgba(57, 55, 72, 0.88);
   height: 100vh;
   left: 0;
   opacity: 0.22;
+  position: fixed;
+  width: 100vw;
+}
+
+.currency-switcher-closer {
+  z-index: 3;
+  height: 100vh;
+  left: 0;
+  opacity: 0;
   position: fixed;
   width: 100vw;
 }

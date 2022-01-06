@@ -10,10 +10,10 @@ class CurrencySwitcher extends Component {
     super();
     this.state = {
       currencies: [],
-      open: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleTrigger = this.handleTrigger.bind(this);
   }
 
   componentDidMount() {
@@ -31,27 +31,34 @@ class CurrencySwitcher extends Component {
     currencySwitcherFunction(objectToDispatch);
   }
 
+  handleTrigger() {
+    const {
+      handleCurrencySwitcherTrigger,
+      handleCartOverlayTrigger,
+      currencySwitcherIsOpen,
+    } = this.props;
+    handleCurrencySwitcherTrigger(!currencySwitcherIsOpen);
+    handleCartOverlayTrigger(false);
+  }
+
   render() {
-    const { currencies, open } = this.state;
-    const { label } = this.props;
+    const { currencies } = this.state;
+    const { label, currencySwitcherIsOpen } = this.props;
     return (
       <>
         <div className="currency-switcher-header">
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({ open: !open });
-            }}
-          >
+          <button type="button" onClick={() => this.handleTrigger()}>
             {label}
             <img
               src={currencyDropdownIcon}
               alt="currency dropdown icon"
-              className={`currency-switcher-icon${open ? "-open" : "-closed"}`}
+              className={`currency-switcher-icon${
+                currencySwitcherIsOpen ? "-open" : "-closed"
+              }`}
             />
           </button>
         </div>
-        {open && (
+        {currencySwitcherIsOpen && (
           <div className="currency-switcher-body">
             {currencies.map(({ symbol, label }) => {
               return (

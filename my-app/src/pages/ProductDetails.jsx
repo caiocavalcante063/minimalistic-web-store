@@ -65,7 +65,7 @@ class ProductDetails extends Component {
         <div className="product-details">
           <div className="product-details-gallery-container">
             {gallery &&
-              gallery.slice(0, 5).map((image, index) => {
+              gallery.slice(0, 4).map((image, index) => {
                 return (
                   <button
                     className="gallery-img"

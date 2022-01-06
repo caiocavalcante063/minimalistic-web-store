@@ -12,10 +12,13 @@ export default class Header extends Component {
     this.state = {
       selectedCategory: "all",
       cartOverlayIsOpen: false,
+      currencySwitcherIsOpen: false,
     };
 
     this.handleLocation = this.handleLocation.bind(this);
     this.handleCartOverlayTrigger = this.handleCartOverlayTrigger.bind(this);
+    this.handleCurrencySwitcherTrigger =
+      this.handleCurrencySwitcherTrigger.bind(this);
   }
 
   componentDidMount() {
@@ -28,16 +31,31 @@ export default class Header extends Component {
     this.setState({ selectedCategory });
   }
 
-  handleCartOverlayTrigger() {
-    const { cartOverlayIsOpen } = this.state;
-    this.setState({ cartOverlayIsOpen: !cartOverlayIsOpen });
+  handleCartOverlayTrigger(status) {
+    this.setState({ cartOverlayIsOpen: status });
+  }
+
+  handleCurrencySwitcherTrigger(status) {
+    this.setState({ currencySwitcherIsOpen: status });
   }
 
   render() {
-    const { selectedCategory, cartOverlayIsOpen } = this.state;
+    const { selectedCategory, cartOverlayIsOpen, currencySwitcherIsOpen } =
+      this.state;
     return (
       <>
-        {cartOverlayIsOpen && <div className="fade-background"></div>}
+        {currencySwitcherIsOpen && (
+          <div
+            className="currency-switcher-closer"
+            onClick={() => this.setState({ currencySwitcherIsOpen: false })}
+          ></div>
+        )}
+        {cartOverlayIsOpen && (
+          <div
+            className="fade-background"
+            onClick={() => this.setState({ cartOverlayIsOpen: false })}
+          ></div>
+        )}
         <div className="header">
           <div className={"header-left-container"}>
             <div
@@ -70,12 +88,23 @@ export default class Header extends Component {
           </div>
           <div className="header-right-container">
             <div className="currency-switcher">
-              <CurrencySwitcher />
+              <CurrencySwitcher
+                handleCurrencySwitcherTrigger={
+                  this.handleCurrencySwitcherTrigger
+                }
+                currencySwitcherIsOpen={currencySwitcherIsOpen}
+                handleCartOverlayTrigger={this.handleCartOverlayTrigger}
+                cartOverlayIsOpen={cartOverlayIsOpen}
+              />
             </div>
             <div className="cart-overlay">
               <CartOverlay
                 handleCartOverlayTrigger={this.handleCartOverlayTrigger}
                 cartOverlayIsOpen={cartOverlayIsOpen}
+                handleCurrencySwitcherTrigger={
+                  this.handleCurrencySwitcherTrigger
+                }
+                currencySwitcherIsOpen={currencySwitcherIsOpen}
               />
             </div>
           </div>

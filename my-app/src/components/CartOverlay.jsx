@@ -8,6 +8,11 @@ import cartIcon from "../images/cartIcon.svg";
 import { getProductPrice, productsCounter } from "../utils/utils";
 
 export class CartOverlay extends Component {
+  constructor() {
+    super();
+
+    this.handleTrigger = this.handleTrigger.bind(this);
+  }
   getTotalPrice() {
     const { currency, cartItems } = this.props;
     let totalPrice = 0;
@@ -16,6 +21,16 @@ export class CartOverlay extends Component {
       return (totalPrice += price.amount * quantity);
     });
     return Math.round(totalPrice * 100) / 100;
+  }
+
+  handleTrigger() {
+    const {
+      handleCurrencySwitcherTrigger,
+      handleCartOverlayTrigger,
+      cartOverlayIsOpen,
+    } = this.props;
+    handleCurrencySwitcherTrigger(false);
+    handleCartOverlayTrigger(!cartOverlayIsOpen);
   }
 
   render() {
@@ -30,7 +45,7 @@ export class CartOverlay extends Component {
     return (
       <>
         <div className="cart-overlay-header">
-          <button type="button" onClick={handleCartOverlayTrigger}>
+          <button type="button" onClick={() => this.handleTrigger()}>
             <img className="cart-overlay-icon" src={cartIcon} alt="cart icon" />
             <CartProductCounter />
           </button>
