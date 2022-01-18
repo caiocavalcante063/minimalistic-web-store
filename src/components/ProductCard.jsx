@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { browserHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { PRODUCT_QUERY } from "../graphQL/queries";
@@ -7,8 +8,8 @@ import cartIconWhite from "../images/cartIconWhite.svg";
 import { addToCartAction } from "../redux/actions";
 
 class ProductCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.productHoverAddToCart = this.productHoverAddToCart.bind(this);
   }
@@ -48,7 +49,11 @@ class ProductCard extends Component {
 
     return (
       <div className={`product-card${inStock === false ? "-out" : ""}`} id={id}>
-        {inStock === false && <div className="product-card-out-fade"></div>}
+        {inStock === false && (
+          <Link to={`/product-details/${id}`}>
+            <div className="product-card-out-fade"></div>
+          </Link>
+        )}
         {inStock === true && (
           <button
             className="product-card-hover-cart-button"

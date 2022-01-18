@@ -103,7 +103,12 @@ export class CartOverlay extends Component {
               </div>
               <div className="cart-overlay-body-bag-and-checkout-container">
                 <Link to="/cart">
-                  <button className="view-bag-button">VIEW BAG</button>
+                  <button
+                    className="view-bag-button"
+                    onClick={() => this.handleTrigger()}
+                  >
+                    VIEW BAG
+                  </button>
                 </Link>
                 <button className="checkout-button">CHECK OUT</button>
               </div>

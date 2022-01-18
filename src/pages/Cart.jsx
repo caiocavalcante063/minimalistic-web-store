@@ -101,30 +101,34 @@ class Cart extends Component {
                       />
                     </div>
                     <div className="cart-item-right-gallery-container">
-                      <img
-                        className="left-arrow"
-                        src={leftArrow}
-                        alt="previous"
-                        onClick={(e) =>
-                          this.handleCurrentImage(
-                            productDetails.gallery,
-                            productIndex,
-                            e
-                          )
-                        }
-                      />
-                      <img
-                        className="right-arrow"
-                        src={rightArrow}
-                        alt="next"
-                        onClick={(e) =>
-                          this.handleCurrentImage(
-                            productDetails.gallery,
-                            productIndex,
-                            e
-                          )
-                        }
-                      />
+                      {productDetails.gallery.length > 1 && (
+                        <>
+                          <img
+                            className="left-arrow"
+                            src={leftArrow}
+                            alt="previous"
+                            onClick={(e) =>
+                              this.handleCurrentImage(
+                                productDetails.gallery,
+                                productIndex,
+                                e
+                              )
+                            }
+                          />
+                          <img
+                            className="right-arrow"
+                            src={rightArrow}
+                            alt="next"
+                            onClick={(e) =>
+                              this.handleCurrentImage(
+                                productDetails.gallery,
+                                productIndex,
+                                e
+                              )
+                            }
+                          />
+                        </>
+                      )}
                       <img
                         className="product-img"
                         key={index}

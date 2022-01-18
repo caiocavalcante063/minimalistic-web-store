@@ -29,6 +29,7 @@ class CurrencySwitcher extends Component {
     const label = innerText.split(" ")[0];
     const objectToDispatch = { currency: value, label };
     currencySwitcherFunction(objectToDispatch);
+    this.handleTrigger();
   }
 
   handleTrigger() {
