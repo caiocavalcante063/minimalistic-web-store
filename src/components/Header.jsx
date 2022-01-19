@@ -42,6 +42,7 @@ export default class Header extends Component {
   render() {
     const { selectedCategory, cartOverlayIsOpen, currencySwitcherIsOpen } =
       this.state;
+    const { categories } = this.props;
     return (
       <>
         {currencySwitcherIsOpen && (
@@ -58,30 +59,20 @@ export default class Header extends Component {
         )}
         <div className="header">
           <div className={"header-left-container"}>
-            <div
-              className={`header-link-page${
-                selectedCategory === "all" ? "-selected" : ""
-              }`}
-              onClick={this.handleLocation}
-            >
-              <Link to="/">ALL</Link>
-            </div>
-            <div
-              className={`header-link-page${
-                selectedCategory === "clothes" ? "-selected" : ""
-              }`}
-              onClick={this.handleLocation}
-            >
-              <Link to="/clothes">CLOTHES</Link>
-            </div>
-            <div
-              className={`header-link-page${
-                selectedCategory === "tech" ? "-selected" : ""
-              }`}
-              onClick={this.handleLocation}
-            >
-              <Link to="/tech">TECH</Link>
-            </div>
+            {categories.map(({ name }) => {
+              return (
+                <div
+                  className={`header-link-page${
+                    selectedCategory === name ? "-selected" : ""
+                  }`}
+                  onClick={this.handleLocation}
+                >
+                  <Link to={`/${name === "all" ? "" : name}`}>
+                    {name.toUpperCase()}
+                  </Link>
+                </div>
+              );
+            })}
           </div>
           <div className="header-center-container">
             <img src={logo} alt="logo" width="41px" />

@@ -58,3 +58,11 @@ export const CURRENCIES_QUERY = gql`
     }
   }
 `;
+
+export const CATEGORIES_QUERY = gql`
+  query GetCategories {
+    categories {
+        name
+    }
+  }
+`;
