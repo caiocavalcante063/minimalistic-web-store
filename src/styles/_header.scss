@@ -184,7 +184,9 @@
 
         &-products-container {
           background-color: $background-color;
-          height: 500px;
+          display: flex;
+          flex-direction: column;
+          height: 400px;
           overflow-y: scroll;
           padding-bottom: 20px;
           padding-left: 16px;
@@ -306,49 +308,53 @@
           }
         }
 
-        &-total-container {
-          background-color: $background-color;
-          position: relative;
-          width: 293px;
+        &-bottom-container {
+          margin-top: auto;
 
-          h2 {
-            font-family: "Roboto", sans-serif;
-            font-size: 16px;
-            font-weight: 500;
+          .cart-overlay-body-total-container {
+            background-color: $background-color;
+            position: relative;
+            width: 293px;
 
-            span {
-              font-weight: 700;
-              position: absolute;
-              right: 8px;
+            h2 {
+              font-family: "Roboto", sans-serif;
+              font-size: 16px;
+              font-weight: 500;
+
+              span {
+                font-weight: 700;
+                position: absolute;
+                right: 8px;
+              }
             }
           }
-        }
 
-        &-bag-and-checkout-container {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 35px;
+          .cart-overlay-body-bag-and-checkout-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
 
-          button.view-bag-button {
-            background-color: $background-color;
-            border: 1px solid black;
-            color: black;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            height: 43px;
-            width: 140px;
-          }
+            button.view-bag-button {
+              background-color: $background-color;
+              border: 1px solid black;
+              color: black;
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: 600;
+              height: 43px;
+              width: 140px;
+            }
 
-          button.checkout-button {
-            background-color: $accent-color;
-            border: none;
-            color: $background-color;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            height: 43px;
-            width: 140px;
+            button.checkout-button {
+              background-color: $accent-color;
+              border: none;
+              color: $background-color;
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: 600;
+              height: 43px;
+              width: 140px;
+            }
           }
         }
       }

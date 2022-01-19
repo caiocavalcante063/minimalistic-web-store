@@ -62,6 +62,7 @@ export default class Header extends Component {
             {categories.map(({ name }) => {
               return (
                 <div
+                  key={name}
                   className={`header-link-page${
                     selectedCategory === name ? "-selected" : ""
                   }`}

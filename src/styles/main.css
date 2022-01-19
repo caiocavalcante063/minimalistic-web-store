@@ -223,7 +223,14 @@
 
 .header .header-right-container .cart-overlay-body-products-container {
   background-color: #ffffff;
-  height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 400px;
   overflow-y: scroll;
   padding-bottom: 20px;
   padding-left: 16px;
@@ -367,25 +374,29 @@
   width: 105px;
 }
 
-.header .header-right-container .cart-overlay-body-total-container {
+.header .header-right-container .cart-overlay-body-bottom-container {
+  margin-top: auto;
+}
+
+.header .header-right-container .cart-overlay-body-bottom-container .cart-overlay-body-total-container {
   background-color: #ffffff;
   position: relative;
   width: 293px;
 }
 
-.header .header-right-container .cart-overlay-body-total-container h2 {
+.header .header-right-container .cart-overlay-body-bottom-container .cart-overlay-body-total-container h2 {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 500;
 }
 
-.header .header-right-container .cart-overlay-body-total-container h2 span {
+.header .header-right-container .cart-overlay-body-bottom-container .cart-overlay-body-total-container h2 span {
   font-weight: 700;
   position: absolute;
   right: 8px;
 }
 
-.header .header-right-container .cart-overlay-body-bag-and-checkout-container {
+.header .header-right-container .cart-overlay-body-bottom-container .cart-overlay-body-bag-and-checkout-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -395,7 +406,7 @@
   margin-top: 35px;
 }
 
-.header .header-right-container .cart-overlay-body-bag-and-checkout-container button.view-bag-button {
+.header .header-right-container .cart-overlay-body-bottom-container .cart-overlay-body-bag-and-checkout-container button.view-bag-button {
   background-color: #ffffff;
   border: 1px solid black;
   color: black;
@@ -406,7 +417,7 @@
   width: 140px;
 }
 
-.header .header-right-container .cart-overlay-body-bag-and-checkout-container button.checkout-button {
+.header .header-right-container .cart-overlay-body-bottom-container .cart-overlay-body-bag-and-checkout-container button.checkout-button {
   background-color: #5ece7b;
   border: none;
   color: #ffffff;
