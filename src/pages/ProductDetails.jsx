@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import DOMPurify from "dompurify";
 import { PRODUCT_QUERY } from "../graphQL/queries";
 import { client } from "..";
 import AddToCartButton from "../components/AddToCartButton";
@@ -50,7 +51,8 @@ class ProductDetails extends Component {
   }
 
   handleDescription(productDescription) {
-    return { __html: `${productDescription}` };
+    // returning the sanitized HTML
+    return { __html: `${DOMPurify.sanitize(productDescription)}` };
   }
 
   render() {
@@ -115,6 +117,8 @@ class ProductDetails extends Component {
               {description && (
                 <div
                   className="product-details-info-description-container"
+                  // the HTML element is first sanitized to improve security
+                  // https://pragmaticwebsecurity.com/articles/spasecurity/react-xss-part2.html
                   dangerouslySetInnerHTML={this.handleDescription(description)}
                 />
               )}

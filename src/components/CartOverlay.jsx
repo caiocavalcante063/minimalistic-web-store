@@ -71,9 +71,7 @@ export class CartOverlay extends Component {
                         </div>
                         <h2 className="cart-overlay-body-product-price">{`${
                           price.currency.symbol
-                        }${
-                          Math.round(price.amount * quantity * 100) / 100
-                        }`}</h2>
+                        }${Math.round(price.amount * 100) / 100}`}</h2>
                         <div className="cart-overlay-body-product-attributes-container">
                           <ProductAttributes
                             attributes={productDetails.attributes}

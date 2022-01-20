@@ -84,7 +84,7 @@ class Cart extends Component {
                     {/* rounds prices to 2 decimal places */}
                     <h2 className="cart-item-left-price">{`${
                       price.currency.symbol
-                    }${Math.round(price.amount * quantity * 100) / 100}`}</h2>
+                    }${Math.round(price.amount * 100) / 100}`}</h2>
                     <div className="cart-item-left-attributes-container">
                       <ProductAttributes
                         attributes={productDetails.attributes}
