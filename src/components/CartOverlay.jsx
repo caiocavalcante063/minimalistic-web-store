@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProductAttributes from "../components/ProductAttributes";
@@ -69,9 +70,8 @@ export class CartOverlay extends Component {
                             {`${productDetails.name} ${productDetails.brand}`}
                           </h2>
                         </div>
-                        <h2 className="cart-overlay-body-product-price">{`${
-                          price.currency.symbol
-                        }${Math.round(price.amount * 100) / 100}`}</h2>
+                        <h2 className="cart-overlay-body-product-price">{`${price.currency.symbol
+                          }${Math.round(price.amount * 100) / 100}`}</h2>
                         <div className="cart-overlay-body-product-attributes-container">
                           <ProductAttributes
                             attributes={productDetails.attributes}
@@ -122,6 +122,15 @@ export class CartOverlay extends Component {
       </>
     );
   }
+}
+
+CartOverlay.propTypes = {
+  cartItems: PropTypes.array,
+  cartOverlayIsOpen: PropTypes.bool,
+  currency: PropTypes.string,
+  currencyLabel: PropTypes.string,
+  handleCartOverlayTrigger: PropTypes.func,
+  handleCurrencySwitcherTrigger: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({

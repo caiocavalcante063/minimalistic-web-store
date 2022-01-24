@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import CategoryBody from "../components/CategoryBody";
 import "../styles/main.css";
@@ -14,6 +15,10 @@ export class Category extends Component {
       </div>
     );
   }
+}
+
+Category.propTypes = {
+  name: PropTypes.string
 }
 
 export default Category;

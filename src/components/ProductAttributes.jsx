@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import "../styles/main.css";
 
@@ -32,12 +33,12 @@ export default class ProductAttributes extends Component {
             const checkSwatch = attribute.type === "swatch" ? "-swatch" : "";
             const selected =
               selectedAttributes &&
-              Object.entries(selectedAttributes).length > 0 &&
-              Object.entries(selectedAttributes).some(
-                (val) =>
-                  val[0] === `${attribute.type} ${attribute.name}` &&
-                  val[1] === value
-              )
+                Object.entries(selectedAttributes).length > 0 &&
+                Object.entries(selectedAttributes).some(
+                  (val) =>
+                    val[0] === `${attribute.type} ${attribute.name}` &&
+                    val[1] === value
+                )
                 ? `selected${checkSwatch}`
                 : `not-selected${checkSwatch}`;
 
@@ -60,4 +61,10 @@ export default class ProductAttributes extends Component {
       );
     });
   }
+}
+
+ProductAttributes.propTypes = {
+  attributes: PropTypes.array,
+  handleCart: PropTypes.func,
+  selectedAttributes: PropTypes.object
 }

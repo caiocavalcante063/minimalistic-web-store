@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import CurrencySwitcher from "./CurrencySwitcher";
@@ -63,9 +64,8 @@ export default class Header extends Component {
               return (
                 <div
                   key={name}
-                  className={`header-link-page${
-                    selectedCategory === name ? "-selected" : ""
-                  }`}
+                  className={`header-link-page${selectedCategory === name ? "-selected" : ""
+                    }`}
                   onClick={this.handleLocation}
                 >
                   <Link to={`/${name === "all" ? "" : name}`}>
@@ -105,3 +105,7 @@ export default class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  categories: PropTypes.array
+};

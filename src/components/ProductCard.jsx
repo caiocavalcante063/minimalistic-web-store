@@ -1,5 +1,5 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
-import { browserHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { PRODUCT_QUERY } from "../graphQL/queries";
@@ -86,6 +86,17 @@ class ProductCard extends Component {
       </div>
     );
   }
+}
+
+ProductCard.propTypes = {
+  addToCart: PropTypes.func,
+  brand: PropTypes.string,
+  currency: PropTypes.string,
+  gallery: PropTypes.array,
+  id: PropTypes.string,
+  inStock: PropTypes.bool,
+  name: PropTypes.string,
+  prices: PropTypes.array
 }
 
 const mapStateToProps = (state) => ({

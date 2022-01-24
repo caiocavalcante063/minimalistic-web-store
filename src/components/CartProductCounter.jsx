@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { productsCounter } from "../utils/utils";
@@ -14,6 +15,10 @@ export class CartProductCounter extends Component {
       )
     );
   }
+}
+
+CartProductCounter.propTypes = {
+  cartItems: PropTypes.array
 }
 
 const mapStateToProps = (state) => ({

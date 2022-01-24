@@ -16,4 +16,4 @@ export const addToCartAction = (product) => ({
 export const removeFromCartAction = (product) => ({
   type: REMOVE_FROM_CART,
   product,
-});
+})

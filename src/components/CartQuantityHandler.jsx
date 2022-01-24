@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import { addToCartAction, removeFromCartAction } from "../redux/actions";
 import { connect } from "react-redux";
@@ -37,6 +38,14 @@ class CartQuantityHandler extends Component {
       </>
     );
   }
+}
+
+CartQuantityHandler.propTypes = {
+  addToCart: PropTypes.func,
+  productDetails: PropTypes.object,
+  quantity: PropTypes.number,
+  removeFromCart: PropTypes.func,
+  selectedAttributes: PropTypes.object
 }
 
 const mapDispatchToProps = (dispatch) => ({

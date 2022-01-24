@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { currencySwitcherAction } from "../redux/actions";
@@ -53,9 +54,8 @@ class CurrencySwitcher extends Component {
             <img
               src={currencyDropdownIcon}
               alt="currency dropdown icon"
-              className={`currency-switcher-icon${
-                currencySwitcherIsOpen ? "-open" : "-closed"
-              }`}
+              className={`currency-switcher-icon${currencySwitcherIsOpen ? "-open" : "-closed"
+                }`}
             />
           </button>
         </div>
@@ -78,6 +78,14 @@ class CurrencySwitcher extends Component {
       </>
     );
   }
+}
+
+CurrencySwitcher.propTypes = {
+  currencySwitcherFunction: PropTypes.func,
+  currencySwitcherIsOpen: PropTypes.bool,
+  handleCartOverlayTrigger: PropTypes.func,
+  handleCurrencySwitcherTrigger: PropTypes.func,
+  label: PropTypes.string
 }
 
 const mapStateToProps = (state) => ({

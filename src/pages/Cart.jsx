@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import ProductAttributes from "../components/ProductAttributes";
 import CartQuantityHandler from "../components/CartQuantityHandler";
@@ -43,8 +44,8 @@ class Cart extends Component {
         ? (currIndex[1] = 0)
         : (currIndex[1] += 1)
       : currIndex[1] <= 0
-      ? (currIndex[1] = productGallery.length - 1)
-      : (currIndex[1] -= 1);
+        ? (currIndex[1] = productGallery.length - 1)
+        : (currIndex[1] -= 1);
 
     this.setState({ galleryIndexes: [...galleryIndexes, currIndex] });
   }
@@ -82,9 +83,8 @@ class Cart extends Component {
                       {productDetails.name}
                     </h2>
                     {/* rounds prices to 2 decimal places */}
-                    <h2 className="cart-item-left-price">{`${
-                      price.currency.symbol
-                    }${Math.round(price.amount * 100) / 100}`}</h2>
+                    <h2 className="cart-item-left-price">{`${price.currency.symbol
+                      }${Math.round(price.amount * 100) / 100}`}</h2>
                     <div className="cart-item-left-attributes-container">
                       <ProductAttributes
                         attributes={productDetails.attributes}
@@ -147,6 +147,11 @@ class Cart extends Component {
       </div>
     );
   }
+}
+
+Cart.propTypes = {
+  cartItems: PropTypes.array,
+  currency: PropTypes.string
 }
 
 const mapStateToProps = (state) => ({

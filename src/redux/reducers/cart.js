@@ -54,11 +54,13 @@ const matchedProductSearcher = (state, action) => {
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
+  const addToCartOcurrence = productOccurrenceVerifier(state, action);
+  const removeFromCartMatchedProduct = matchedProductSearcher(
+    state,
+    action
+  );
   switch (action.type) {
     case ADD_TO_CART:
-      // checking if there is already an element in the cart with the same properties and selected attributes as the one the user is trying to add
-      let addToCartOcurrence = productOccurrenceVerifier(state, action);
-
       // if there's no occurrence, the product is added to the cart, else, the quantity of the product is updated
       if (!addToCartOcurrence) {
         action.product.productIndex = state.indexCounter;
@@ -82,11 +84,6 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       }
 
     case REMOVE_FROM_CART:
-      const removeFromCartMatchedProduct = matchedProductSearcher(
-        state,
-        action
-      );
-
       // if the product quantity is 1, then the subtract button should remove the product from the cart
       // else, 1 product is subtracted
       if (removeFromCartMatchedProduct.quantity === 1) {

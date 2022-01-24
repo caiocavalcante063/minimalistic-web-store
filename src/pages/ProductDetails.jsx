@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import DOMPurify from "dompurify";
@@ -128,6 +129,10 @@ class ProductDetails extends Component {
       </div>
     );
   }
+}
+
+ProductDetails.propTypes = {
+  currency: PropTypes.string
 }
 
 const mapStateToProps = (state) => ({

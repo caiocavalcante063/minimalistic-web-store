@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToCartAction } from "../redux/actions";
@@ -40,6 +41,12 @@ class AddToCartButton extends Component {
       </div>
     );
   }
+}
+
+AddToCartButton.propTypes = {
+  addToCart: PropTypes.func,
+  productDetails: PropTypes.object,
+  selectedAttributes: PropTypes.object
 }
 
 const mapDispatchToProps = (dispatch) => ({
