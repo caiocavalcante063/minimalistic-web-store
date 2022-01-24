@@ -4,6 +4,7 @@ export const PRODUCT_QUERY = gql`
   query GetProduct($id: String!) {
     product(id: $id) {
       name
+      inStock
       gallery
       description
       attributes {

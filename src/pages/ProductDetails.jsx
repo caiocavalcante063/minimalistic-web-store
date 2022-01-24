@@ -59,13 +59,13 @@ class ProductDetails extends Component {
   render() {
     const { productDetails, selectedAttributes, mainImage } = this.state;
     const { currency } = this.props;
-    const { brand, gallery, name, attributes, prices, description } =
+    const { brand, gallery, name, attributes, prices, description, inStock } =
       productDetails;
     const price = getProductPrice(prices, currency);
 
     return (
       <div className="body-wrapper">
-        <div className="product-details">
+        <div className={`product-details ${!inStock ? "product-details-out" : ""}`}>
           <div className="gallery-outer-container">
             <div className="product-details-gallery-container">
               {gallery &&
@@ -86,6 +86,15 @@ class ProductDetails extends Component {
           </div>
 
           <div className="product-details-main-img-container">
+            {inStock === false && (
+              <>
+                <div className="product-card-out-fade"></div>
+                <div className="out-of-stock">
+                  <h2 className="out-of-stock-text">OUT OF STOCK</h2>
+                </div>
+              </>
+            )}
+
             {gallery && <img src={mainImage} alt={name} width="300px" />}
           </div>
           <div className="product-details-info-outer-container">
