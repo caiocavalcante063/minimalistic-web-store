@@ -12,7 +12,7 @@ import {
 } from "@apollo/client";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000",
+  uri: "https://minimalistic-webstore-server.herokuapp.com/",
 });
 
 export const client = new ApolloClient({
