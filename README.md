@@ -2,8 +2,7 @@
 
 # Contexto
 
-Este projeto trata-se de uma loja online, em que a pessoa usuária é capaz de interagir com os produtos listados, filtrando-os por categorias e os adicionando
-ao carrinho. Também é possível selecionar o câmbio desejado.
+Este projeto trata-se de uma loja online, em que a pessoa usuária é capaz de interagir com os produtos listados, podendo selecionar diversos atributos disponíveis para cada produto. É possível listar os produtos por categoria, adicionar um produto ao carrinho e escolher o câmbio desejado.
 
 ## Tecnologias utilizadas
 
