@@ -601,6 +601,8 @@
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 32.39px;
+  height: 511px;
+  overflow-y: scroll;
   width: 105px;
 }
 
@@ -665,6 +667,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 511px;
+  overflow-y: scroll;
   width: 320px;
 }
 

@@ -6,8 +6,8 @@
     display: flex;
     flex-direction: column;
     gap: 32.39px;
-    // height: 511px;
-    // overflow-y: scroll;
+    height: 511px;
+    overflow-y: scroll;
     width: 105px;
 
     .gallery-img {
@@ -65,8 +65,8 @@
   &-info {
     display: flex;
     flex-direction: column;
-    // height: 511px;
-    // overflow-y: scroll;
+    height: 511px;
+    overflow-y: scroll;
     width: 320px;
 
     &-title {
